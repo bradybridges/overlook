@@ -1,13 +1,34 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import './images/turing-logo.png';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+let data = [];
 
-console.log('This is the JavaScript entry file - your code begins here.');
+const fetchData = () => {
+  const urls = ["https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users", "https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms", "https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings", "https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices"];
+  const requests = urls.map(url => 
+    fetch(url).then(response => response.json())
+    .then(response => data.push(response))
+  );
+};
+
+const formatData = () => {
+
+  const result = data.reduce((formattedData, dataset) => {
+    const key = Object.keys(dataset)[0];
+    formattedData[key] = dataset[key];
+    return formattedData;
+  }, {});
+  return result;
+}
+
+fetchData();
+setTimeout(function() {
+  data = formatData();
+  console.log(data);
+  
+},500);
+
+
+
+ 
