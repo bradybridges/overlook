@@ -21,3 +21,16 @@ $primary-color: #eeeeee;
   border-bottom: solid $secondary-color 2px;
   color: $primary-color;
 }
+
+@mixin input-style {
+  font-size: 1em;
+  height: 50px;
+  padding-left: 15px;
+  width: 75%;
+}
+
+@mixin button-style {
+  font-size: 1.2em;
+  height: 50px;
+  width: 100px;
+}
