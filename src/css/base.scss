@@ -29,8 +29,7 @@ h1 {
 }
 
 h2 {
-  color: $primary-color;
-  font-size: 2.8em;
+  @include h2-styles;
 }
 
 p {
@@ -52,13 +51,22 @@ nav {
   transition: transform .2s;
   width: 150px;
   &:hover {
-    background-color: $header-color;
-    border-top: solid $secondary-color 2px;
-    border-bottom: solid $secondary-color 2px;
-    color: $primary-color;
+    @include active-button;
     cursor: pointer;
     transform: scale(1.1);
   }
+}
+
+#home-btn {
+  border-radius: 4px 0 0px 4px;
+}
+
+#rooms-btn {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.active-button {
+  @include active-button;
 }
 
 #home {
