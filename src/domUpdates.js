@@ -13,13 +13,17 @@ const domUpdates = {
     if(results.length > 0) {
       results.forEach(customer => this.appendSearchResult(customer));
     } else {
-      this.appendSearchResult({name: 'No Customers Found'});
+      this.appendSearchResult({name: 'No Customers Found', id: null});
     }
     
   },
 
   appendSearchResult(customer) {
-    $('#search-results').append(`<p class="search-result">${customer.name}</p>`);
+    $('#search-results').append(`<p class="search-result" dataset-id=${customer.id}>${customer.name}</p>`);
+  },
+
+  showNewCustomerPage() {
+    $('#new-customer').fadeIn(250);
   }
 
 }
