@@ -53,7 +53,11 @@ $(document).ready(() => {
     $('#search-results').children().remove();
     $('#search-results').addClass('display-none');
   }
-})
+  });
+
+  $('#new-customer-btn').click(() => {
+    domUpdates.showNewCustomerPage();
+  })
 });
 
 

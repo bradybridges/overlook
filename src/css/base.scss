@@ -127,11 +127,37 @@ nav {
 .search-result {
   color: #232931;
   text-align: center;
+  transition: transform .3s;
+  &:hover {
+    background-color: $header-color;
+    border: solid 1px $secondary-color;
+    color: $primary-color;
+    transform: scale(1.2);
+  }
+}
+
+#new-customer{
+  text-align: center;
+  
+  #new-customer-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 #new-customer-btn {
   @include button-style;
   align-self: center;
+  width: 50%;
+}
+
+#last-name-input, #first-name-input {
+  @include input-style;
+}
+
+#create-customer-btn {
+  @include button-style;
   width: 50%;
 }
 
