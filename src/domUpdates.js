@@ -24,6 +24,32 @@ const domUpdates = {
 
   showNewCustomerPage() {
     $('#new-customer').fadeIn(250);
+  },
+
+  appendAllRoomServiceOrders(date, hotel) {
+    const orders = hotel.orders.returnTodaysOrders();
+    this.appendAllTimeOrderRevenue(hotel);
+    this.appendOrdersRevenueToday(hotel);
+    orders.forEach(order => this.appendOrder(order));
+  },
+
+  appendOrder(order) {
+    const orderElement = `<div class="order">
+      <p class="order-item">${order.food}</p>
+      <p class="order-cost">${order.totalCost}</p>
+      <p class="order-id">${order.userID}</p>
+      </div>`;
+    $('#orders-container').append(orderElement);
+  },
+
+  appendOrdersRevenueToday(hotel) {
+    const revenue = hotel.orders.returnOrderRevenueToday();
+    $('#orders-container').append(`<h3>Today's Room Service Revenue: $${revenue}</h3>`);
+  },
+
+  appendAllTimeOrderRevenue(hotel) {
+    const revenue = hotel.orders.returnTotalOrderRevenueAllTime();
+    $('#orders-container').append(`<h3>Total Room Service Revenue: $${revenue}</h3>`);
   }
 
 }
