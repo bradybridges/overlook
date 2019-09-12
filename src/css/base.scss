@@ -1,6 +1,10 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$primary-background: blanchedalmond;
 
 body {
   background-color: $primary-background;
+}
+
+.display-none {
+  display: none;
 }
