@@ -114,13 +114,19 @@ nav {
 #search-results {
   background-color: #ccc;
   border-radius: 4px;
-  border: solid 1px #ff5722;
-  height: 250px;
+  border: solid 2px #232931;
+  height: 420px;
   left: 2.5%;
+  overflow: scroll;
   position: absolute;
   top: 50%;
   width: 95%;
   z-index: 5;
+}
+
+.search-result {
+  color: #232931;
+  text-align: center;
 }
 
 #new-customer-btn {

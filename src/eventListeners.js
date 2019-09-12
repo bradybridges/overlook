@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import domUpdates from './domUpdates';
 $('nav').click((e) => {
   if(e.target.dataset.toggle) {
     const toggleTarget = e.target.dataset.toggle;
@@ -8,13 +9,3 @@ $('nav').click((e) => {
     $(toggleTarget).fadeIn(500);
   } 
 });
-
-$('#customer-search-input').keyup((e) => {
-  const searchValue = $(e.target).val();
-  
-  if(searchValue !== '') {
-    $('#search-results').removeClass('display-none');
-  } else {
-    $('#search-results').addClass('display-none');
-  }
-})
