@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Ov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Monda:400,700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <header>
+      <h1 id="main-header">Outlook App</h1>
+      <span id="header-date"></span>
+    </header>
+    
+    <nav>
+      <button id="home-btn" class="tab" data-toggle='#home'>Home</button>
+      <button id="customers-btn" class="tab" data-toggle='#customers'>Customers</button>
+      <button id="orders-btn" class="tab" data-toggle='#orders'>Orders</button>
+      <button id="rooms-btn" class="tab" data-toggle='#rooms'>Rooms</button>
+    </nav>
+    <section>
+      <section id="home" class="display-none">
+      <h2 id="home-date"></h2>
+      <section id="home-info-container">
+        <div id="room-info">
+          <p id="percent-booked"></p>
+          <p id="num-rooms-avail"></p>
+        </div>
+        <div id="revenue-info">
+          <h2>Expected Revenue Today</h2>
+          <p id="revenue"></p>
+        </div>
+      </section>
+      </section>
+      <section id="customers" class="display-none">
+      
+      </section>
+      <section id="orders" class="display-none">
+      
+      </section>
+      <section id="rooms" class="display-none">
+      
+      </section>
+    </section>
   </body>
 </html>

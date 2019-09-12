@@ -1,0 +1,16 @@
+$primary-background: #2d4059;
+$header-color: #222831;
+$secondary-color: #ff5722;
+$primary-color: #eeeeee;
+
+@mixin headers {
+  background-color: $header-color;
+  color: $primary-color;
+  margin: 0;
+  text-align: center;
+}
+
+@mixin h2-styles {
+  color: #eee;
+  font-size: 2.8em;
+}

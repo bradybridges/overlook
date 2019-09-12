@@ -1,6 +1,76 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import './_mixins.scss';
+$primary-background: #2d4059;
+$header-color: #222831;
+$secondary-color: #ff5722;
+$primary-color: #eeeeee;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-color: $primary-background;
+  font-family: 'Monda', sans-serif;
+  margin: 0;
+}
+
+button, input {
+  font-family: 'Monda', sans-serif;
+}
+
+h1 {
+  @include headers;
+  font-size: 5em;
+  text-shadow:
+    -1px -1px 0 $primary-color,
+    1px -1px 0 $primary-color,
+    -1px 1px 0 $primary-color,
+    1px 1px 0 $primary-color;
+}
+
+h2 {
+  color: $primary-color;
+  font-size: 2.8em;
+}
+
+p {
+  color: $primary-color;
+  font-size: 2em;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+.tab {
+  background-color: $primary-color;
+  border: none;
+  font-size: 1.5em;
+  height: 100px;
+  margin-top: 5%;
+  transition: transform .2s;
+  width: 150px;
+  &:hover {
+    background-color: $header-color;
+    border-top: solid $secondary-color 2px;
+    border-bottom: solid $secondary-color 2px;
+    color: $primary-color;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
+
+#home {
+  text-align: center;
+}
+
+#home-info-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.display-none {
+  display: none;
 }
