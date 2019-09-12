@@ -4,6 +4,7 @@
     <title>Ov</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Monda:400,700&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -12,13 +13,13 @@
     </header>
     
     <nav>
-      <button id="home-btn" data-toggle='#home'>Home</button>
-      <button id="customers-btn" data-toggle='#customers'>Customers</button>
-      <button id="orders-btn" data-toggle='#orders'>Orders</button>
-      <button id="rooms-btn" data-toggle='#rooms'>Rooms</button>
+      <button id="home-btn" class="tab" data-toggle='#home'>Home</button>
+      <button id="customers-btn" class="tab" data-toggle='#customers'>Customers</button>
+      <button id="orders-btn" class="tab" data-toggle='#orders'>Orders</button>
+      <button id="rooms-btn" class="tab" data-toggle='#rooms'>Rooms</button>
     </nav>
     <section>
-      <section id="home" class="display-none" style="height: 100px; background-color: blue;">
+      <section id="home" class="display-none">
       <h2 id="home-date"></h2>
       <section id="home-info-container">
         <div id="room-info">
@@ -31,13 +32,13 @@
         </div>
       </section>
       </section>
-      <section id="customers" style="height: 100px; background-color: red;" class="display-none">
+      <section id="customers" class="display-none">
       
       </section>
-      <section id="orders" style="height: 100px; background-color: green;" class="display-none">
+      <section id="orders" class="display-none">
       
       </section>
-      <section id="rooms" style="height: 100px; background-color: yellow;" class="display-none">
+      <section id="rooms" class="display-none">
       
       </section>
     </section>
