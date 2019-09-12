@@ -14,3 +14,23 @@ $primary-color: #eeeeee;
   color: #eee;
   font-size: 2.8em;
 }
+
+@mixin active-button {
+  background-color: $header-color;
+  border-top: solid $secondary-color 2px;
+  border-bottom: solid $secondary-color 2px;
+  color: $primary-color;
+}
+
+@mixin input-style {
+  font-size: 1em;
+  height: 50px;
+  padding-left: 15px;
+  width: 75%;
+}
+
+@mixin button-style {
+  font-size: 1.2em;
+  height: 50px;
+  width: 100px;
+}

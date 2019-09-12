@@ -29,8 +29,7 @@ h1 {
 }
 
 h2 {
-  color: $primary-color;
-  font-size: 2.8em;
+  @include h2-styles;
 }
 
 p {
@@ -50,15 +49,24 @@ nav {
   height: 100px;
   margin-top: 5%;
   transition: transform .2s;
-  width: 150px;
+  width: 20%;
   &:hover {
-    background-color: $header-color;
-    border-top: solid $secondary-color 2px;
-    border-bottom: solid $secondary-color 2px;
-    color: $primary-color;
+    @include active-button;
     cursor: pointer;
     transform: scale(1.1);
   }
+}
+
+#home-btn {
+  border-radius: 4px 0 0px 4px;
+}
+
+#rooms-btn {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.active-button {
+  @include active-button;
 }
 
 #home {
@@ -70,6 +78,63 @@ nav {
   justify-content: center;
   flex-direction: column;
 }
+
+#customers {
+  margin: 0 auto;
+  margin-top: 7.5%;
+  width: 60%;
+}
+
+#customers-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#customers-search-container {
+  display: flex;
+  justify-content: center;
+}
+
+#customer-search-input {
+  @include input-style;
+}
+
+#customers-search-btn {
+  @include button-style;
+}
+
+#or-p {
+  border-bottom: solid 1px #eee;
+  border-top: solid 1px #eee;
+  margin: 15px auto;
+  text-align: center;
+  width: 25%;
+}
+
+#search-results {
+  background-color: #ccc;
+  border-radius: 4px;
+  border: solid 2px #232931;
+  height: 420px;
+  left: 2.5%;
+  overflow: scroll;
+  position: absolute;
+  top: 50%;
+  width: 95%;
+  z-index: 5;
+}
+
+.search-result {
+  color: #232931;
+  text-align: center;
+}
+
+#new-customer-btn {
+  @include button-style;
+  align-self: center;
+  width: 50%;
+}
+
 
 .display-none {
   display: none;
