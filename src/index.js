@@ -30,7 +30,7 @@ Promise.all([
 
 $(document).ready(() => {
   setTimeout(function() {
-    domUpdates.updateHome(date, hotel.admin);
+    domUpdates.updateHome(date, hotel);
     domUpdates.appendAllRoomServiceOrders(date, hotel);
     domUpdates.appendRoomData(hotel);
   },500);
