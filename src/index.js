@@ -7,8 +7,8 @@ import Hotel from './Hotel';
 
 let hotel;
 const data = [];
-const date = new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
-
+const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1 < 10 ? '0'.concat(new Date().getMonth() + 1) : new Date().getMonth() + 1 < 10}/${new Date().getDate()}`
+// new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
 const formatData = (data) => {
 
   const result = data.reduce((formattedData, dataset) => {
@@ -32,6 +32,7 @@ $(document).ready(() => {
   setTimeout(function() {
     domUpdates.updateHome(date, hotel.admin);
     domUpdates.appendAllRoomServiceOrders(date, hotel);
+    domUpdates.appendRoomData(hotel);
   },500);
 
   $('#customer-search-input').keyup((e) => {

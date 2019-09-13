@@ -30,7 +30,12 @@ const domUpdates = {
     const orders = hotel.orders.returnTodaysOrders();
     this.appendAllTimeOrderRevenue(hotel);
     this.appendOrdersRevenueToday(hotel);
-    orders.forEach(order => this.appendOrder(order));
+    if(orders.length > 0) {
+      orders.forEach(order => this.appendOrder(order));
+    } else {
+      $('#orders-container').append('<h2> No Orders Today</h2>');
+    }
+    
   },
 
   appendOrder(order) {
@@ -50,6 +55,21 @@ const domUpdates = {
   appendAllTimeOrderRevenue(hotel) {
     const revenue = hotel.orders.returnTotalOrderRevenueAllTime();
     $('#orders-container').append(`<h3>Total Room Service Revenue: $${revenue}</h3>`);
+  },
+
+  appendRoomData(hotel) {
+    this.appendMostPopularBookingDate(hotel);
+    this.appendDayWithMostBookings(hotel);
+  },
+
+  appendMostPopularBookingDate(hotel) {
+    const mostPopularDate = hotel.rooms.returnMostPopularBookingDate();
+    $('#most-popular-booking-day').text(mostPopularDate);
+  },
+
+  appendDayWithMostBookings(hotel) {
+    const mostBookingsDay = hotel.rooms.returnDayWithMostBookingsAvail();
+    $('#most-rooms-avail').text(`Date: ${mostBookingsDay.date} --- Rooms Avail: ${mostBookingsDay.bookingsAvail}`);
   }
 
 }
