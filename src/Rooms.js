@@ -47,8 +47,15 @@ class Rooms {
     return upcomingBookings;
   }
 
+  returnRoomsAvailableOnDate(date) {
+    let roomsBooked = this.bookings.filter(booking => booking.date === date);
+    roomsBooked = roomsBooked.reduce((rooms, currentBooking) => {
+      rooms.push(currentBooking.roomNumber);
+      return rooms;
+    }, []);
+    return this.rooms.filter(room => !roomsBooked.includes(room.number));
+  }
+
 }
 
 export default Rooms;
-
-// splitDate[0] >= 2019 && splitDate[1] >= 7 && (splitDate[1] > 7 || (splitDate[1] === 7 && splitDate[2] > 31))

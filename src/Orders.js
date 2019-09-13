@@ -24,6 +24,14 @@ class Orders {
     }, 0);
     return revenue.toFixed(2);
   }
+
+  addOrder(order) {
+
+  }
+
+  removeOrder(userId, order) {
+    
+  }
 }
 
 export default Orders;

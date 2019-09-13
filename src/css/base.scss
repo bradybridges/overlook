@@ -161,6 +161,11 @@ nav {
   width: 50%;
 }
 
+#room-search-results {
+  max-height: 500px;
+  overflow: scroll;
+}
+
 
 .display-none {
   display: none;

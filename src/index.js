@@ -47,9 +47,17 @@ $(document).ready(() => {
   }
   });
 
-  $('#new-customer-btn').click(() => {
+  $('#new-customer-btn').click((e) => {
+    e.preventDefault();
     domUpdates.showNewCustomerPage();
   })
+
+  $('#search-room-btn').click((e) => {
+    e.preventDefault();
+    const searchDate = $('#room-search-input').val();
+    const results = hotel.rooms.returnRoomsAvailableOnDate(searchDate);
+    domUpdates.appendRoomSearchResults(results);
+  });
 });
 
 
