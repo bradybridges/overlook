@@ -1,10 +1,10 @@
 import $ from 'jquery';
 const domUpdates = {
-  updateHome(date, admin) {
+  updateHome(date, hotel) {
     $('#home-date').text(date);
-    $('#percent-booked').text(`${admin.returnPercentBooked()}% Of Rooms Filled`);
-    $('#num-rooms-avail').text(`${admin.returnNumRoomsAvailable()} Rooms Available`);
-    $('#revenue').text(`$${admin.returnTodaysRevenue()}`);
+    $('#percent-booked').text(`${hotel.rooms.returnPercentBooked()}% Of Rooms Filled`);
+    $('#num-rooms-avail').text(`${hotel.rooms.returnNumRoomsAvailable()} Rooms Available`);
+    $('#revenue').text(`$${hotel.rooms.returnTodaysRevenue()}`);
   },
 
   updateSearchResults(searchValue, users) {

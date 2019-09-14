@@ -26,11 +26,12 @@ Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices').then(response => response.json()),
 ]).then(data => {
   hotel = new Hotel(formatData(data), date)
+  console.log(hotel.data);
 });
 
 $(document).ready(() => {
   setTimeout(function() {
-    domUpdates.updateHome(date, hotel.admin);
+    domUpdates.updateHome(date, hotel);
     domUpdates.appendAllRoomServiceOrders(date, hotel);
     domUpdates.appendRoomData(hotel);
   },500);
