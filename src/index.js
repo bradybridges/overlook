@@ -62,13 +62,30 @@ $(document).ready(() => {
 
   $('#search-results').click((e) => {
     if(e.target.classList.contains('search-result')) {
-      const name = $(e.target).text();
-      domUpdates.resetCustomerSearch();
-      domUpdates.resetOrders();
-      domUpdates.resetRooms();
-      domUpdates.appendSelectedUserData(name, hotel);
-      domUpdates.appendUserRoomData(name, hotel);
+      userSelectedDomUpdates(e);
     }
+  });
+
+  function userSelectedDomUpdates(e) {
+    const name = $(e.target).text();
+    domUpdates.selectedUserHandler(name, hotel);
+  }
+
+  $('#new-customer').keyup(() => {
+    const firstName = $('#first-name-input').val();
+    const lastName = $('#last-name-input').val();
+    if(firstName !== '' && lastName !== '') {
+      $('#create-customer-btn').prop('disabled', false);
+    } else {
+      $('#create-customer-btn').prop('disabled',true);
+    }
+  });
+
+  $('#create-customer-btn').click((e) => {
+    e.preventDefault();
+    domUpdates.createCustomer(hotel);
+    const newUsersName = hotel.customers.returnNewestCustomer().name;
+    domUpdates.selectedUserHandler(newUsersName, hotel);
   });
 });
 
