@@ -24,6 +24,7 @@ const domUpdates = {
   },
 
   showNewCustomerPage() {
+    $('#new-customer-btn').hide();
     $('#new-customer').fadeIn(250);
   },
 

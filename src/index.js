@@ -67,8 +67,34 @@ $(document).ready(() => {
       domUpdates.resetOrders();
       domUpdates.resetRooms();
       domUpdates.appendSelectedUserData(name, hotel);
-      // domUpdates.appendUserRoomData(name, hotel);
     }
+  });
+
+  $('#new-customer').keyup(() => {
+    const firstName = $('#first-name-input').val();
+    const lastName = $('#last-name-input').val();
+    if(firstName !== '' && lastName !== '') {
+      $('#create-customer-btn').prop('disabled', false);
+    } else {
+      $('#create-customer-btn').prop('disabled',true);
+    }
+  });
+
+  $('#create-customer-btn').click((e) => {
+    e.preventDefault();
+    const firstName = $('#first-name-input').val();
+    const lastName = $('#last-name-input').val();
+    const status = hotel.customers.createCustomer(firstName, lastName);
+    if(status) {
+      alert('customer created...');
+      $('#new-customer').fadeOut(250);
+      $('#new-customer-btn').show();
+    } else {
+      alert('customer already exists...');
+      $('#first-name-input').val('');
+      $('#last-name-input').val('');
+    }
+
   });
 });
 
