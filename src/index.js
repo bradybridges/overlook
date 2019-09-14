@@ -63,8 +63,8 @@ $(document).ready(() => {
   $('#search-results').click((e) => {
     if(e.target.classList.contains('search-result')) {
       const name = $(e.target).text();
-      console.log(name);
-      console.log(hotel.customers.findCustomer(name));
+      domUpdates.resetCustomerSearch();
+      domUpdates.resetOrders();
       domUpdates.appendSelectedUserData(name, hotel);
     }
   });

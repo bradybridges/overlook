@@ -11,7 +11,7 @@
       <h1 id="main-header">Outlook App</h1>
       <span id="header-date"></span>
     </header>
-    <span id="selected-user"></span>
+    <h3 id="selected-user"></h3>
     <nav>
       <button id="home-btn" class="tab active-button" data-toggle='#home'>Home</button>
       <button id="customers-btn" class="tab" data-toggle='#customers'>Customers</button>
@@ -23,11 +23,12 @@
       <h2 id="home-date"></h2>
       <section id="home-info-container">
         <div id="room-info">
+          <h3>Today's Booking Data</h2>
           <p id="percent-booked"></p>
           <p id="num-rooms-avail"></p>
         </div>
         <div id="revenue-info">
-          <h2>Expected Revenue Today</h2>
+          <h3>Expected Revenue Today</h2>
           <p id="revenue"></p>
         </div>
       </section>
@@ -56,6 +57,8 @@
       <section id="orders" class="display-none">
         <section id="onload-order-data">
           <h2 id="orders-header">Todays Room Service Orders</h2>
+          <h3 id="todays-service-revenue"></h3>
+          <h3 id="total-service-revenue"></h3>
           <section id="orders-container"></section>
         </section>
         <section id="selected-user-orders" class="display-none">

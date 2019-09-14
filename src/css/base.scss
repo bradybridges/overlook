@@ -32,6 +32,10 @@ h2 {
   @include h2-styles;
 }
 
+h3 {
+  @include h3-styles;
+}
+
 p {
   color: $primary-color;
   font-size: 2em;
@@ -40,6 +44,10 @@ p {
 nav {
   display: flex;
   justify-content: center;
+}
+
+section {
+  text-align: center;
 }
 
 .tab {
@@ -75,8 +83,8 @@ nav {
 
 #home-info-container {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 #customers {
@@ -136,6 +144,16 @@ nav {
   }
 }
 
+#onload-order-data {
+  text-align: center;
+}
+
+.order {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 #new-customer{
   text-align: center;
   
@@ -164,6 +182,25 @@ nav {
 #room-search-results {
   max-height: 500px;
   overflow: scroll;
+}
+
+#room-search-input{
+  font-size: 1em;
+  height: 50px;
+  padding-left: 15px;
+  width: 300px;
+}
+
+#search-room-btn {
+  font-size: 1.2em;
+  height: 50px;
+  width: 300px;
+}
+
+#room-search-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 

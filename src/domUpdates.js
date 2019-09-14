@@ -42,20 +42,20 @@ const domUpdates = {
   appendOrder(order) {
     const orderElement = `<div class="order">
       <p class="order-item">${order.food}</p>
-      <p class="order-cost">${order.totalCost}</p>
-      <p class="order-id">${order.userID}</p>
+      <p class="order-cost">$${order.totalCost}</p>
+      <p class="order-id">UserID: ${order.userID}</p>
       </div>`;
     $('#orders-container').append(orderElement);
   },
 
   appendOrdersRevenueToday(hotel) {
     const revenue = hotel.orders.returnOrderRevenueToday();
-    $('#orders-container').append(`<h3>Today's Room Service Revenue: $${revenue}</h3>`);
+    $('#todays-service-revenue').text(`Today's Room Service Revenue: $${revenue}`);
   },
 
   appendAllTimeOrderRevenue(hotel) {
     const revenue = hotel.orders.returnTotalOrderRevenueAllTime();
-    $('#orders-container').append(`<h3>Total Room Service Revenue: $${revenue}</h3>`);
+    $('#total-service-revenue').text(`Total Room Service Revenue: $${revenue}`);
   },
 
   appendRoomData(hotel) {
@@ -94,7 +94,7 @@ const domUpdates = {
   appendSelectedUserData(name, hotel) {
     let user = hotel.customers.findCustomer(name);
     console.log(user);
-    $('#selected-user').text(name);
+    $('#selected-user').text(`Current Customer: ${name}`);
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
   },
@@ -110,7 +110,7 @@ const domUpdates = {
     if(orders.length > 0){
       orders.forEach(order => this.appendTodayOrder(order)); 
     } else {
-      $('#todays-orders').append('<h4>No Orders Today!</h4>');
+      $('#todays-orders').append('<h4 id="no-orders-today">No Orders Today!</h4>');
     }
     
     $('#selected-user-orders').show();
@@ -119,6 +119,7 @@ const domUpdates = {
   appendTodayOrder(order) {
     const element = `
       <div class="order">
+        <p class="order-item">${order.date}</p>
         <p class="order-item">${order.food}</p>
         <p class="order-item">${order.totalCost}</p>
       </div>`;
@@ -129,18 +130,29 @@ const domUpdates = {
     if(orders.length > 0) {
       orders.forEach(order => this.appendAllTimeOrder(order));
     } else {
-      $('#all-time-orders').append('User has never ordered');
+      $('#all-time-orders').append('<h4 id="no-order-history"> User has never ordered</h4>');
     }
   },
 
   appendAllTimeOrder(order) {
     const element = `
       <div class="order">
+        <p class="order-item">${order.date}</p>
         <p class="order-item">${order.food}</p>
         <p class="order-item">${order.totalCost}</p>
       </div>`;
     $('#all-time-orders').append(element);
   },
+
+  resetCustomerSearch() {
+    $('#search-results').addClass('display-none').children().remove();
+    $('#customer-search-input').val('');
+  },
+
+  resetOrders() {
+    $('.order').remove();
+    $('#no-orders-today').remove();
+  }
 
 }
 
