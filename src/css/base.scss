@@ -50,12 +50,16 @@ section {
   text-align: center;
 }
 
+#selected-user {
+  margin: 0;
+}
+
 .tab {
   background-color: $primary-color;
   border: none;
   font-size: 1.5em;
   height: 100px;
-  margin-top: 5%;
+  margin-top: 1%;
   transition: transform .2s;
   width: 20%;
   &:hover {
@@ -89,7 +93,7 @@ section {
 
 #customers {
   margin: 0 auto;
-  margin-top: 7.5%;
+  margin-top: 5.5%;
   width: 60%;
 }
 

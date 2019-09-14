@@ -94,10 +94,11 @@ const domUpdates = {
   appendSelectedUserData(name, hotel) {
     let user = hotel.customers.findCustomer(name);
     console.log(user);
-    $('#selected-user').text(`Current Customer: ${name}`);
+    $('#selected-user').text(`Current Customer: ${name}`).show();
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
     $('#onload-rooms-data').hide();
+    this.appendUserRoomData(name, hotel);
   },
 
   appendSelectedUserOrders(userID, hotel) {
@@ -175,13 +176,18 @@ const domUpdates = {
 
   appendBookingHistory(userID, hotel) {
     const allBookingData = hotel.rooms.returnAllUserBookings(userID);
-    allBookingData.forEach(booking => this.appendBooking(booking));
+    if(allBookingData.length > 0){
+      allBookingData.forEach(booking => this.appendBooking(booking));
+    } else {
+      $('#booking-history').append('<p class="booking-item">No Booking History For User</p>');
+    }
   },
 
   appendBooking(booking) {
     const element = `
       <div class='booking'>
         <p class='booking-item'>${booking.date}</p>
+        <p class='booking-item'>Room Number: ${booking.roomNumber}</p>
       </div>
     `;
     $('#booking-history').append(element);

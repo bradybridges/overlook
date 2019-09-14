@@ -67,7 +67,7 @@ $(document).ready(() => {
       domUpdates.resetOrders();
       domUpdates.resetRooms();
       domUpdates.appendSelectedUserData(name, hotel);
-      domUpdates.appendUserRoomData(name, hotel);
+      // domUpdates.appendUserRoomData(name, hotel);
     }
   });
 });
