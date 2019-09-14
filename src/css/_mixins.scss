@@ -11,8 +11,16 @@ $primary-color: #eeeeee;
 }
 
 @mixin h2-styles {
-  color: #eee;
+  color: $primary-color;
   font-size: 2.8em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+@mixin h3-styles {
+  color: $primary-color;
+  font-size: 2.2em;
+  text-align: center;
 }
 
 @mixin active-button {
