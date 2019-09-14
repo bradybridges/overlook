@@ -20,7 +20,6 @@ class Customers {
       const id = this.customers.length + 1;
       const newCustomer = {id, name};
       this.customers.push(newCustomer);
-      console.log(this.customers);
       return true;
      } else {
       return false;
@@ -38,6 +37,11 @@ class Customers {
     const last = this.capitalizeFirst(lastName);
     const name = first.concat(' ').concat(last);
     return name;
+  }
+
+  returnNewestCustomer() {
+    const newestCustomer = this.customers.length - 1;
+    return this.customers[newestCustomer];
   }
 }
 

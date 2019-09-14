@@ -92,9 +92,15 @@ const domUpdates = {
     $('#room-search-results').append(element);
   },
 
+  selectedUserHandler(name, hotel) {
+    this.resetCustomerSearch();
+    this.resetOrders();
+    this.resetRooms();
+    this.appendSelectedUserData(name, hotel);
+  },
+
   appendSelectedUserData(name, hotel) {
     let user = hotel.customers.findCustomer(name);
-    console.log(user);
     $('#selected-user').text(`Current Customer: ${name}`).show();
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
@@ -197,7 +203,26 @@ const domUpdates = {
   resetRooms() {
     $('.booking-item').remove();
     $('.booking').remove();
-  }
+  },
+
+  createCustomer(hotel) {
+    const firstName = $('#first-name-input').val();
+    const lastName = $('#last-name-input').val();
+    const status = hotel.customers.createCustomer(firstName, lastName);
+    if(status) {
+      alert('customer created...');
+      $('#new-customer').fadeOut(250);
+      $('#new-customer-btn').show();
+      this.clearInputs([$('#first-name-input'), $('#last-name-input')]);
+    } else {
+      alert('customer already exists...');
+      this.clearInputs([$('#first-name-input'), $('#last-name-input')]);
+    }
+  },
+
+  clearInputs(inputArray) {
+    inputArray.forEach(input => input.val(''));
+  },
 
 }
 
