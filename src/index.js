@@ -65,7 +65,9 @@ $(document).ready(() => {
       const name = $(e.target).text();
       domUpdates.resetCustomerSearch();
       domUpdates.resetOrders();
+      domUpdates.resetRooms();
       domUpdates.appendSelectedUserData(name, hotel);
+      domUpdates.appendUserRoomData(name, hotel);
     }
   });
 });

@@ -153,15 +153,45 @@ const domUpdates = {
   resetOrders() {
     $('.order').remove();
     $('#no-orders-today').remove();
+    $('#no-order-history').remove();
+  },
+
+  appendUserRoomData(name, hotel) {
+    const userID = hotel.customers.findCustomer(name).id;
+    this.appendBookingToday(userID, hotel);
+    this.appendBookingHistory(userID, hotel);
+    $('#selected-user-rooms').show();
+  },
+
+  appendBookingToday(userID, hotel) {
+    const bookingToday = hotel.rooms.returnUserBookingToday(userID);
+    if(bookingToday) {
+      const element = `<p class='booking-item'>Room ${bookingToday.roomNumber}`;
+      $('#todays-booking').append(element);
+    } else {
+      $('#todays-booking').append('<p class="booking-item">No booking for user today</p>');
+    }
+  },
+
+  appendBookingHistory(userID, hotel) {
+    const allBookingData = hotel.rooms.returnAllUserBookings(userID);
+    allBookingData.forEach(booking => this.appendBooking(booking));
+  },
+
+  appendBooking(booking) {
+    const element = `
+      <div class='booking'>
+        <p class='booking-item'>${booking.date}</p>
+      </div>
+    `;
+    $('#booking-history').append(element);
+  },
+
+  resetRooms() {
+    $('.booking-item').remove();
+    $('.booking').remove();
   }
 
 }
-
-// bedSize: "twin"
-// bidet: false
-// costPerNight: 265.03
-// numBeds: 1
-// number: 1
-// roomType: "residential suite"
 
 export default domUpdates;

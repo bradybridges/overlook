@@ -3,6 +3,7 @@ class Rooms {
     this.date = date;
     this.rooms = rooms;
     this.bookings = bookings;
+    console.log();
   }
 
   returnMostPopularBookingDate() {
@@ -78,6 +79,22 @@ class Rooms {
       return totalRevenue;
     }, 0);
     return revenue.toFixed(2);
+  }
+
+  returnUserBookingToday(userID) {
+    const currentBooking =  this.bookings.filter(booking => {
+      if(booking.date === this.date && booking.userID === userID) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    return currentBooking[0];
+  }
+
+  returnAllUserBookings(userId) {
+    return this.bookings.filter(booking => booking.userID === userId);
   }
 
 }
