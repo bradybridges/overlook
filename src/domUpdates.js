@@ -97,6 +97,7 @@ const domUpdates = {
     $('#selected-user').text(`Current Customer: ${name}`);
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
+    $('#onload-rooms-data').hide();
   },
 
   appendSelectedUserOrders(userID, hotel) {
