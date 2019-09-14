@@ -11,7 +11,7 @@
       <h1 id="main-header">Outlook App</h1>
       <span id="header-date"></span>
     </header>
-    
+    <span id="selected-user"></span>
     <nav>
       <button id="home-btn" class="tab active-button" data-toggle='#home'>Home</button>
       <button id="customers-btn" class="tab" data-toggle='#customers'>Customers</button>
@@ -54,8 +54,18 @@
         </div>
       </section>
       <section id="orders" class="display-none">
-        <h2 id="orders-header">Todays Room Service Orders</h2>
-        <section id="orders-container"></section>
+        <section id="onload-order-data">
+          <h2 id="orders-header">Todays Room Service Orders</h2>
+          <section id="orders-container"></section>
+        </section>
+        <section id="selected-user-orders" class="display-none">
+          <div id="todays-orders">
+            <h3>Orders Today</h3>
+          </div>
+          <div id="all-time-orders">
+            <h3>All Orders</h3>
+          </div>
+        </section>
       </section>
       <section id="rooms" class="display-none">
         <div id="room-search-results"></div>

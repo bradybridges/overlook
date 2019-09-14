@@ -7,7 +7,7 @@ const mockOrdersData = {
     totalCost: 14.9
     },
     {
-    userID: 100,
+    userID: 14,
     date: "2019/07/29",
     food: "Rustic Cotton Sandwich",
     totalCost: 17.33
@@ -97,7 +97,7 @@ const mockOrdersData = {
     totalCost: 6.78
     },
     {
-    userID: 85,
+    userID: 14,
     date: "2019/10/22",
     food: "Incredible Cotton Sandwich",
     totalCost: 8.26

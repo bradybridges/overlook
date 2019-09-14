@@ -1,10 +1,11 @@
 import $ from 'jquery';
 const domUpdates = {
   updateHome(date, hotel) {
+    const totalRevenue = parseFloat(hotel.rooms.returnTodaysRevenue() + hotel.orders.returnOrderRevenueToday());
     $('#home-date').text(date);
     $('#percent-booked').text(`${hotel.rooms.returnPercentBooked()}% Of Rooms Filled`);
     $('#num-rooms-avail').text(`${hotel.rooms.returnNumRoomsAvailable()} Rooms Available`);
-    $('#revenue').text(`$${hotel.rooms.returnTodaysRevenue()}`);
+    $('#revenue').text(`$${totalRevenue}`);
   },
 
   updateSearchResults(searchValue, users) {
@@ -88,6 +89,57 @@ const domUpdates = {
       </div>
     `;
     $('#room-search-results').append(element);
+  },
+
+  appendSelectedUserData(name, hotel) {
+    let user = hotel.customers.findCustomer(name);
+    console.log(user);
+    $('#selected-user').text(name);
+    $('#onload-order-data').hide();
+    this.appendSelectedUserOrders(user.id, hotel);
+  },
+
+  appendSelectedUserOrders(userID, hotel) {
+    const allTimeOrders = hotel.orders.findUserOrdersAllTime(userID);
+    const todaysOrders = hotel.orders.findUserOrdersToday(userID);
+    this.appendTodaysOrders(todaysOrders);
+    this.appendAllTimeOrders(allTimeOrders);
+  },
+
+  appendTodaysOrders(orders) {
+    if(orders.length > 0){
+      orders.forEach(order => this.appendTodayOrder(order)); 
+    } else {
+      $('#todays-orders').append('<h4>No Orders Today!</h4>');
+    }
+    
+    $('#selected-user-orders').show();
+  },
+
+  appendTodayOrder(order) {
+    const element = `
+      <div class="order">
+        <p class="order-item">${order.food}</p>
+        <p class="order-item">${order.totalCost}</p>
+      </div>`;
+    $('#todays-orders').append(element);
+  },
+
+  appendAllTimeOrders(orders) {
+    if(orders.length > 0) {
+      orders.forEach(order => this.appendAllTimeOrder(order));
+    } else {
+      $('#all-time-orders').append('User has never ordered');
+    }
+  },
+
+  appendAllTimeOrder(order) {
+    const element = `
+      <div class="order">
+        <p class="order-item">${order.food}</p>
+        <p class="order-item">${order.totalCost}</p>
+      </div>`;
+    $('#all-time-orders').append(element);
   },
 
 }

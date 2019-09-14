@@ -32,4 +32,16 @@ describe('Orders', () => {
       expect(orders.returnTotalOrderRevenueAllTime()).to.equal('248.07');
     });
   });
+
+  describe('findUserOrdersAllTime', () => {
+    it('should return specific users order data for all time', () => {
+      expect(orders.findUserOrdersAllTime(14).length).to.equal(3);
+    });
+  });
+
+  describe('findUserOrdersToday', () => {
+    it('should return users orders today', () => {
+      expect(orders.findUserOrdersToday(14).length).to.equal(2);
+    });
+  });
 });

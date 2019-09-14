@@ -25,6 +25,20 @@ class Orders {
     return revenue.toFixed(2);
   }
 
+  findUserOrdersAllTime(userID) {
+    return this.orders.filter(order => order.userID === userID);
+  }
+
+  findUserOrdersToday(userID) {
+    return this.orders.filter(order => {
+      if(order.userID === userID && order.date === this.date) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
+
   addOrder(order) {
 
   }

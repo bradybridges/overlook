@@ -51,13 +51,22 @@ $(document).ready(() => {
   $('#new-customer-btn').click((e) => {
     e.preventDefault();
     domUpdates.showNewCustomerPage();
-  })
+  });
 
   $('#search-room-btn').click((e) => {
     e.preventDefault();
     const searchDate = $('#room-search-input').val();
     const results = hotel.rooms.returnRoomsAvailableOnDate(searchDate);
     domUpdates.appendRoomSearchResults(results);
+  });
+
+  $('#search-results').click((e) => {
+    if(e.target.classList.contains('search-result')) {
+      const name = $(e.target).text();
+      console.log(name);
+      console.log(hotel.customers.findCustomer(name));
+      domUpdates.appendSelectedUserData(name, hotel);
+    }
   });
 });
 
