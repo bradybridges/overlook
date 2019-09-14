@@ -14,7 +14,7 @@ class Orders {
       total += order.totalCost;
       return total;
     }, 0);
-    return revenue;
+    return revenue.toFixed(2);
   }
 
   returnTotalOrderRevenueAllTime() {

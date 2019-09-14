@@ -8,6 +8,14 @@ describe('Rooms', () => {
   const date = "2019/10/19";
   let rooms = new Rooms(date, roomData.rooms, bookingData.bookings);
 
+   it('should be a function', function() {
+    expect(Rooms).to.be.a('function');
+  });
+
+  it('should be an instance of Rooms', function() {
+    expect(rooms).to.be.an.instanceof(Rooms);
+  });
+
   describe('returnMostPopularBookingDate', () => {
     it('should return most popular booking date', () => {
       expect(rooms.returnMostPopularBookingDate()).to.equal("2019/10/19");
