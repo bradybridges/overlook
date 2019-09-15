@@ -102,7 +102,7 @@ const mockOrdersData = {
     food: "Incredible Cotton Sandwich",
     totalCost: 8.26
     }
-    ]
+  ]
 }
 
 module.exports = mockOrdersData;
