@@ -18,7 +18,7 @@ $primary-color: #eeeeee;
 }
 
 @mixin h3-styles {
-  color: $primary-color;
+  color: $header-color;
   font-size: 2.2em;
   text-align: center;
 }
@@ -41,4 +41,11 @@ $primary-color: #eeeeee;
   font-size: 1.2em;
   height: 50px;
   width: 100px;
+}
+
+@mixin tab-body-style {
+  background-color: $primary-color;
+  border-radius: 4px;
+  margin: 20px auto;
+  width: 90%;
 }
