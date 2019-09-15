@@ -36,8 +36,13 @@ h3 {
   @include h3-styles;
 }
 
+h4 {
+  color: $header-color;
+  font-size: 1.8em;
+}
+
 p {
-  color: $primary-color;
+  color: $header-color;
   font-size: 2em;
 }
 
@@ -86,6 +91,8 @@ section {
 }
 
 #home-info-container {
+  @include tab-body-style;
+  color: $header-color;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -116,8 +123,9 @@ section {
 }
 
 #or-p {
-  border-bottom: solid 1px #eee;
-  border-top: solid 1px #eee;
+  border-bottom: solid 1px $primary-color;
+  border-top: solid 1px $primary-color;
+  color: $primary-color;
   margin: 15px auto;
   text-align: center;
   width: 25%;
@@ -126,7 +134,7 @@ section {
 #search-results {
   background-color: #ccc;
   border-radius: 4px;
-  border: solid 2px #232931;
+  border: solid 2px $header-color;
   height: 420px;
   left: 2.5%;
   overflow: scroll;
@@ -137,7 +145,7 @@ section {
 }
 
 .search-result {
-  color: #232931;
+  color: $header-color;
   text-align: center;
   transition: transform .3s;
   &:hover {
@@ -149,13 +157,22 @@ section {
 }
 
 #onload-order-data {
+  @include tab-body-style;
   text-align: center;
+}
+
+#orders-header {
+  color: $header-color;
 }
 
 .order {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+#selected-user-orders {
+  @include tab-body-style;
 }
 
 #new-customer{
@@ -181,6 +198,18 @@ section {
 #create-customer-btn {
   @include button-style;
   width: 50%;
+}
+
+#onload-rooms-data {
+  @include tab-body-style;
+}
+
+#selected-user-rooms {
+  @include tab-body-style;
+}
+
+#room-info {
+  color: $header-color;
 }
 
 #room-search-results {
