@@ -187,6 +187,13 @@ const domUpdates = {
     }
   },
 
+  showAddOrderHandler(userID, hotel) {
+    const bookingToday = hotel.rooms.returnUserBookingToday(userID);
+    if(bookingToday) {
+      $('#add-order-btn').show();
+    }
+  },
+
   appendBookingHistory(userID, hotel) {
     const allBookingData = hotel.rooms.returnAllUserBookings(userID);
     if(allBookingData.length > 0){
@@ -275,6 +282,11 @@ const domUpdates = {
     $('#no-orders-today').remove();
     $('#no-order-history').remove();
     $('#no-booking-history').remove();
+  },
+
+  appendMenuOption(item) {
+    const element = `<option data-price='${item.price}' value="${item.food}">${item.food} - $${item.price}</option>`;
+    $('#order-select').append(element);
   },
 
 }

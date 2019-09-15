@@ -64,7 +64,8 @@ $(document).ready(() => {
     if(e.target.classList.contains('search-result')) {
       userSelectedDomUpdates(e);
       hotel.currentCustomer = $(e.target).text();
-      console.log(hotel.currentCustomer);
+      const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+      domUpdates.showAddOrderHandler(userID, hotel);
     }
   });
 
@@ -104,10 +105,19 @@ $(document).ready(() => {
 
   $('#new-booking').click((e) => {
     if(e.target.classList.contains('book-btn')) {
+      const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
       domUpdates.newBookingHandler(hotel, e);
       domUpdates.postBookingDomUpdates(hotel.currentCustomer, hotel);
+      domUpdates.showAddOrderHandler(userID, hotel);
     }
-  })
+  });
+
+  $('#add-order-btn').click((e) => {
+    e.preventDefault();
+    const menu = hotel.orders.getMenu();
+    menu.forEach(item => domUpdates.appendMenuOption(item));
+    $('#new-order-menu').slideDown(500);
+  });
 });
 
 

@@ -5,7 +5,7 @@ $('nav').click((e) => {
     const toggleTarget = e.target.dataset.toggle;
     $(e.target).addClass('active-button');
     $(e.target).siblings().removeClass('active-button');
-    $(toggleTarget).siblings().fadeOut(500);
+    $(toggleTarget).siblings().hide();
     $(toggleTarget).fadeIn(500);
   } 
 });

@@ -39,6 +39,17 @@ class Orders {
     })
   }
 
+  getMenu() {
+    const menu = this.orders.reduce((menu, currentOrder) => {
+      if(!menu.find(morsel => morsel.food === currentOrder.food)){
+        const price = currentOrder.totalCost.toFixed(2);
+        menu.push({food: currentOrder.food, price})
+      }
+      return menu;
+    }, []);
+    return menu;
+  }
+
   addOrder(order) {
 
   }
