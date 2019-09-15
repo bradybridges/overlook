@@ -96,6 +96,8 @@ const domUpdates = {
     this.resetCustomerSearch();
     this.resetOrders();
     this.resetRooms();
+    hotel.currentCustomer = name;
+    console.log(hotel.currentCustomer);
     this.appendSelectedUserData(name, hotel);
   },
 
@@ -190,7 +192,7 @@ const domUpdates = {
     if(allBookingData.length > 0){
       allBookingData.forEach(booking => this.appendBooking(booking));
     } else {
-      $('#booking-history').append('<p class="booking-item">No Booking History For User</p>');
+      $('#booking-history').append('<p id="no-booking-history" class="booking-item">No Booking History For User</p>');
     }
   },
 
@@ -259,13 +261,20 @@ const domUpdates = {
   },
 
   postBookingDomUpdates(name, hotel) {
+    this.removePostBookingExtraData();
+    this.appendSelectedUserData(name, hotel);
+    $('#todays-booking').show();
+    $('#booking-history').show();
+  },
+
+  removePostBookingExtraData() {
     $('.available-booking').remove();
     $('#new-booking').hide();
     $('#no-booking').remove();
     $('#new-booking-btn').hide();
-    this.appendSelectedUserData(name, hotel);
-    $('#todays-booking').show();
-    $('#booking-history').show();
+    $('#no-orders-today').remove();
+    $('#no-order-history').remove();
+    $('#no-booking-history').remove();
   },
 
 }
