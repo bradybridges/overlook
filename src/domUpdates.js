@@ -177,7 +177,11 @@ const domUpdates = {
       const element = `<p class='booking-item'>Room ${bookingToday.roomNumber}`;
       $('#todays-booking').append(element);
     } else {
-      $('#todays-booking').append('<p class="booking-item">No booking for user today</p>');
+      const element = `
+        <p class="booking-item">No booking for user today</p>
+      `;
+      $('#todays-booking').append(element);
+      $('#new-booking-btn').show();
     }
   },
 
@@ -223,6 +227,28 @@ const domUpdates = {
   clearInputs(inputArray) {
     inputArray.forEach(input => input.val(''));
   },
+
+  appendAvailableBookings(roomsAvail, hotel) {
+    if(roomsAvail.length > 0) {
+      roomsAvail.forEach(room => this.appendAvailableRoom(room));
+    } else {
+      const date = hotel.rooms.date;
+      const availableRooms = hotel.rooms.returnRoomsAvailableOnDate(date);
+      availableRooms.forEach(room => this.appendAvailableRoom(room));
+    }
+  },
+
+  appendAvailableRoom(room) {
+    const element = `
+      <div class='available-booking'>
+        <p class='room-item'>Room Number: ${room.number}</p>
+        <p class='room-item'>${room.roomType}</p>
+        <p class='room-item'>Has Bidet: ${room.bidet}</p>
+        <p class='room-item'>Cost Per night: $${room.costPerNight}</p>
+        <button class='book-btn'>Book</button>
+      </div>`;
+    $('#new-booking').append(element);
+  }
 
 }
 

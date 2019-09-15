@@ -57,6 +57,21 @@ class Rooms {
     return this.rooms.filter(room => !roomsBooked.includes(room.number));
   }
 
+  returnRoomsAvailableOfType(date, type) {
+    let roomsBooked = this.bookings.filter(booking => booking.date === date);
+    roomsBooked = roomsBooked.reduce((rooms, currentBooking) => {
+      rooms.push(currentBooking.roomNumber);
+      return rooms;
+    }, []);
+    return this.rooms.filter(room => {
+      if(!roomsBooked.includes(room.number) && room.roomType === type) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
+
   returnPercentBooked() {
     let numBookingsToday = this.returnNumBookingsToday();
     return (numBookingsToday / 50).toFixed(2) * 100;
@@ -95,6 +110,10 @@ class Rooms {
 
   returnAllUserBookings(userId) {
     return this.bookings.filter(booking => booking.userID === userId);
+  }
+
+  returnRoomCost(roomNum) {
+    return this.rooms.find(room => room.roomNumber === roomNum).costPerNight;
   }
 
 }

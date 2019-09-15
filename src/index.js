@@ -87,6 +87,18 @@ $(document).ready(() => {
     const newUsersName = hotel.customers.returnNewestCustomer().name;
     domUpdates.selectedUserHandler(newUsersName, hotel);
   });
+
+  $('#new-booking-btn').click(() => {
+    $('#todays-booking').hide()
+    $('#booking-history').hide()
+    $('#new-booking').show();
+  });
+
+  $('#go-btn').click(() => {
+    const type = $('#room-type-select').val();
+    let roomsAvail = hotel.rooms.returnRoomsAvailableOfType(date, type);
+    domUpdates.appendAvailableBookings(roomsAvail, hotel);
+  });
 });
 
 
