@@ -1,7 +1,7 @@
 import $ from 'jquery';
 const domUpdates = {
   updateHome(date, hotel) {
-    const totalRevenue = parseFloat(hotel.rooms.returnTodaysRevenue() + hotel.orders.returnOrderRevenueToday());
+    const totalRevenue = parseFloat(hotel.rooms.returnTodaysRevenue() + hotel.orders.returnOrderRevenueToday()).toFixed(2);
     $('#home-date').text(date);
     $('#percent-booked').text(`${hotel.rooms.returnPercentBooked()}% Of Rooms Filled`);
     $('#num-rooms-avail').text(`${hotel.rooms.returnNumRoomsAvailable()} Rooms Available`);
@@ -187,6 +187,13 @@ const domUpdates = {
     }
   },
 
+  showAddOrderHandler(userID, hotel) {
+    const bookingToday = hotel.rooms.returnUserBookingToday(userID);
+    if(bookingToday) {
+      $('#add-order-btn').show();
+    }
+  },
+
   appendBookingHistory(userID, hotel) {
     const allBookingData = hotel.rooms.returnAllUserBookings(userID);
     if(allBookingData.length > 0){
@@ -275,6 +282,11 @@ const domUpdates = {
     $('#no-orders-today').remove();
     $('#no-order-history').remove();
     $('#no-booking-history').remove();
+  },
+
+  appendMenuOption(item) {
+    const element = `<option data-price='${item.price}' value="${item.food}">${item.food} - $${item.totalCost}</option>`;
+    $('#order-select').append(element);
   },
 
 }

@@ -64,7 +64,8 @@ $(document).ready(() => {
     if(e.target.classList.contains('search-result')) {
       userSelectedDomUpdates(e);
       hotel.currentCustomer = $(e.target).text();
-      console.log(hotel.currentCustomer);
+      const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+      domUpdates.showAddOrderHandler(userID, hotel);
     }
   });
 
@@ -104,11 +105,37 @@ $(document).ready(() => {
 
   $('#new-booking').click((e) => {
     if(e.target.classList.contains('book-btn')) {
+      const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
       domUpdates.newBookingHandler(hotel, e);
       domUpdates.postBookingDomUpdates(hotel.currentCustomer, hotel);
+      domUpdates.showAddOrderHandler(userID, hotel);
+      domUpdates.updateHome(hotel.date, hotel);
     }
-  })
+  });
+
+  $('#add-order-btn').click((e) => {
+    e.preventDefault();
+    const menu = hotel.orders.getMenu();
+    menu.forEach(item => domUpdates.appendMenuOption(item));
+    $('#new-order-menu').slideDown(500);
+  });
+
+  $('#submit-order-btn').click((e) => {
+    const order = returnOrderObject();
+    hotel.orders.addOrder(order);
+    domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
+    domUpdates.updateHome(hotel.date, hotel);
+  });
+
+  function returnOrderObject() {
+    const food = $('#order-select').val();
+    const totalCost = parseFloat(hotel.orders.returnFoodPrice(food));
+    const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+    const date = hotel.date;
+    return {date, food, totalCost, userID};
+  }
 });
+
 
 
 

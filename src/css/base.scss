@@ -208,6 +208,11 @@ section {
   @include tab-body-style;
 }
 
+#booking-history {
+  max-height: 500px;
+  overflow: scroll;
+}
+
 #room-info {
   color: $header-color;
 }
@@ -234,6 +239,14 @@ section {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.booking {
+  border-bottom: solid #232931 2px;
+  border-top: solid #232931 2px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 2px;
 }
 
 
