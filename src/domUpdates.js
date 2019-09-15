@@ -20,7 +20,7 @@ const domUpdates = {
   },
 
   appendSearchResult(customer) {
-    $('#search-results').append(`<p class="search-result" dataset-id=${customer.id}>${customer.name}</p>`);
+    $('#search-results').append(`<p class="search-result" data-id=${customer.id}>${customer.name}</p>`);
   },
 
   showNewCustomerPage() {

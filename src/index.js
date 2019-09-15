@@ -61,7 +61,7 @@ $(document).ready(() => {
   });
 
   $('#search-results').click((e) => {
-    if(e.target.classList.contains('search-result')) {
+    if(e.target.classList.contains('search-result') && e.target.dataset.id !== 'null') {
       userSelectedDomUpdates(e);
       hotel.currentCustomer = $(e.target).text();
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
