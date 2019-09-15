@@ -109,6 +109,7 @@ $(document).ready(() => {
       domUpdates.newBookingHandler(hotel, e);
       domUpdates.postBookingDomUpdates(hotel.currentCustomer, hotel);
       domUpdates.showAddOrderHandler(userID, hotel);
+      domUpdates.updateHome(hotel.date, hotel);
     }
   });
 
@@ -118,7 +119,23 @@ $(document).ready(() => {
     menu.forEach(item => domUpdates.appendMenuOption(item));
     $('#new-order-menu').slideDown(500);
   });
+
+  $('#submit-order-btn').click((e) => {
+    const order = returnOrderObject();
+    hotel.orders.addOrder(order);
+    domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
+    domUpdates.updateHome(hotel.date, hotel);
+  });
+
+  function returnOrderObject() {
+    const food = $('#order-select').val();
+    const totalCost = parseFloat(hotel.orders.returnFoodPrice(food));
+    const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+    const date = hotel.date;
+    return {date, food, totalCost, userID};
+  }
 });
+
 
 
 

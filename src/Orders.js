@@ -42,16 +42,21 @@ class Orders {
   getMenu() {
     const menu = this.orders.reduce((menu, currentOrder) => {
       if(!menu.find(morsel => morsel.food === currentOrder.food)){
-        const price = currentOrder.totalCost.toFixed(2);
-        menu.push({food: currentOrder.food, price})
+        const totalCost = parseFloat(currentOrder.totalCost).toFixed(2);
+        menu.push({food: currentOrder.food, totalCost})
       }
       return menu;
     }, []);
     return menu;
   }
 
-  addOrder(order) {
+  returnFoodPrice(food) {
+    const price = this.orders.find(order => order.food === food).totalCost;
+    return price.toFixed(2);
+  }
 
+  addOrder(order) {
+    this.orders.push(order);
   }
 
   removeOrder(userId, order) {
