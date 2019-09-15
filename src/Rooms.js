@@ -3,7 +3,6 @@ class Rooms {
     this.date = date;
     this.rooms = rooms;
     this.bookings = bookings;
-    console.log();
   }
 
   returnMostPopularBookingDate() {
@@ -120,10 +119,6 @@ class Rooms {
     const booking = {date: this.date, roomNumber, userID};
     this.bookings.push(booking);
   }
-
-//   date: "2019/10/19"
-// roomNumber: 5
-// userID: 4
 
 }
 

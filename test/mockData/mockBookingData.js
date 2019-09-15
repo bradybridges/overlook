@@ -45,6 +45,11 @@ const mockBookingData = {
     date: "2019/10/26",
     roomNumber: 36
     },
+    {
+    userID: 4,
+    date: "2019/10/26",
+    roomNumber: 10
+    },
   ]
 }
 

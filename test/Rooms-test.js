@@ -24,19 +24,25 @@ describe('Rooms', () => {
 
   describe('returnDayWithMostBookingsAvail', () => {
     it('should return day with most bookings avail', () => {
-      expect(rooms.returnDayWithMostBookingsAvail()).to.deep.equal({ bookingsAvail: 49, date: '2019/10/26' });
+      expect(rooms.returnDayWithMostBookingsAvail()).to.deep.equal({ bookingsAvail: 48, date: '2019/10/26' });
     });
   });
 
   describe('returnUpcomingBookings', () => {
     it('should return upcoming bookings', () => {
-      expect(rooms.returnUpcomingBookings()).to.deep.equal([bookingData.bookings[8]]);
+      expect(rooms.returnUpcomingBookings().length).to.equal(2);
     });
   });
 
   describe('returnRoomsAvailableOnDate', () => {
     it('should return rooms avail on date', () => {
-      expect(rooms.returnRoomsAvailableOnDate('2019/10/26').length).to.equal(9);
+      expect(rooms.returnRoomsAvailableOnDate('2019/10/26').length).to.equal(8);
+    });
+  });
+
+  describe('returnRoomsAvailableOfType', () => {
+    it('should return rooms avail on date of type', () => {
+      expect(rooms.returnRoomsAvailableOfType('2019/10/19', 'suite').length).to.equal(2);
     });
   });
 
@@ -62,6 +68,18 @@ describe('Rooms', () => {
     it('should return room revenue for day', () => {
       expect(rooms.returnTodaysRevenue()).to.equal('946.06');
     });
+  });
+
+  describe('returnUserBookingToday', () => {
+    it('should return a users booking for todays date', () => {
+      expect(rooms.returnUserBookingToday(4).roomNumber).to.equal(5);
+    });
+  });
+
+  describe('returnAllUserBookings', () => {
+    it('should return users bookings for all time', () => {
+      expect(rooms.returnAllUserBookings(4).length).to.equal(2);
+    })
   });
 
 });
