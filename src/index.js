@@ -63,6 +63,8 @@ $(document).ready(() => {
   $('#search-results').click((e) => {
     if(e.target.classList.contains('search-result')) {
       userSelectedDomUpdates(e);
+      hotel.currentCustomer = $(e.target).text();
+      console.log(hotel.currentCustomer);
     }
   });
 
@@ -99,6 +101,13 @@ $(document).ready(() => {
     let roomsAvail = hotel.rooms.returnRoomsAvailableOfType(date, type);
     domUpdates.appendAvailableBookings(roomsAvail, hotel);
   });
+
+  $('#new-booking').click((e) => {
+    if(e.target.classList.contains('book-btn')) {
+      domUpdates.newBookingHandler(hotel, e);
+      domUpdates.postBookingDomUpdates(hotel.currentCustomer, hotel);
+    }
+  })
 });
 
 

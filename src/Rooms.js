@@ -116,6 +116,15 @@ class Rooms {
     return this.rooms.find(room => room.roomNumber === roomNum).costPerNight;
   }
 
+  bookRoom(userID, roomNumber) {
+    const booking = {date: this.date, roomNumber, userID};
+    this.bookings.push(booking);
+  }
+
+//   date: "2019/10/19"
+// roomNumber: 5
+// userID: 4
+
 }
 
 export default Rooms;
