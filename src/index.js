@@ -145,6 +145,12 @@ $(document).ready(() => {
     const date = hotel.date;
     return {date, food, totalCost, userID};
   }
+
+  $('#cancel-booking-btn').click(() => {
+    const roomNum = parseInt($('#today-booking-p')[0].dataset.room);
+    hotel.rooms.cancelBooking(roomNum);
+    domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
+  });
 });
 
 

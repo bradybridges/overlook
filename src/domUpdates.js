@@ -181,8 +181,9 @@ const domUpdates = {
   appendBookingToday(userID, hotel) {
     const bookingToday = hotel.rooms.returnUserBookingToday(userID);
     if(bookingToday) {
-      const element = `<p class='booking-item'>Room ${bookingToday.roomNumber}`;
+      const element = `<p id='today-booking-p' data-room='${bookingToday.roomNumber}' class='booking-item'>Room ${bookingToday.roomNumber}`;
       $('#todays-booking').append(element);
+      $('#cancel-booking-btn').show();
     } else {
       const element = `
         <p id="no-booking" class="booking-item">No booking for user today</p>
@@ -221,6 +222,7 @@ const domUpdates = {
   resetRooms() {
     $('.booking-item').remove();
     $('.booking').remove();
+    $('#cancel-booking-btn').hide();
   },
 
   createCustomer(hotel) {
@@ -256,7 +258,7 @@ const domUpdates = {
     const element = `
       <div class='available-booking'>
         <p class='room-item' data-roomnum='${room.number}'>Room Number: ${room.number}</p>
-        <p class='room-item'>${room.roomType}</p>
+        <p class='room-item'>Type: ${room.roomType}</p>
         <p class='room-item'>Has Bidet: ${room.bidet}</p>
         <p class='room-item'>Cost Per night: $${room.costPerNight}</p>
         <button class='book-btn'>Book</button>
