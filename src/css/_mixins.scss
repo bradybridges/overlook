@@ -27,20 +27,22 @@ $primary-color: #eeeeee;
 
 @mixin active-button {
   background-color: $header-color;
-  border-top: solid $secondary-color 2px;
   border-bottom: solid $secondary-color 2px;
+  border-top: solid $secondary-color 2px;
   color: $primary-color;
+  cursor: pointer;
 }
 
 @mixin input-style {
   font-size: 1.5em;
   height: 60px;
-  padding-left: 15px;
+  text-align: center;
   width: 75%;
 }
 
 @mixin button-style {
   border-radius: 4px;
+  color: $header-color;
   font-size: 1.5em;
   height: 60px;
   width: 400px;
