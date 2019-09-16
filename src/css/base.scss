@@ -55,6 +55,18 @@ section {
   text-align: center;
 }
 
+label {
+  font-size: 2em;
+}
+
+select {
+  color: #232931;
+  font-size: 1.5em;
+  height: 60px;
+  margin-bottom: 30px;
+  width: 400px;
+}
+
 #selected-user {
   margin: 0;
 }
@@ -100,47 +112,41 @@ section {
 
 #customers {
   margin: 0 auto;
-  margin-top: 5.5%;
-  width: 60%;
+  margin-top: 2%;
+  width: 90%
 }
 
 #customers-info-container {
+  background-color: $primary-color;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
 }
 
-#customers-search-container {
-  display: flex;
-  justify-content: center;
-}
-
 #customer-search-input {
   @include input-style;
-}
-
-#customers-search-btn {
-  @include button-style;
+  margin: 0 auto;
+  width: 50%;
 }
 
 #or-p {
-  border-bottom: solid 1px $primary-color;
-  border-top: solid 1px $primary-color;
-  color: $primary-color;
+  border-bottom: solid 2px $header-color;
+  border-top: solid 2px $header-color;
+  color: $header-color;
   margin: 15px auto;
   text-align: center;
   width: 25%;
 }
 
 #search-results {
-  background-color: #ccc;
+  background-color: #eee;
   border-radius: 4px;
-  border: solid 2px $header-color;
   height: 420px;
-  left: 2.5%;
+  left: 5%;
   overflow: scroll;
   position: absolute;
   top: 50%;
-  width: 95%;
+  width: 90%;
   z-index: 5;
 }
 
@@ -175,6 +181,18 @@ section {
   @include tab-body-style;
 }
 
+#add-order-btn {
+  @include button-style;
+}
+
+#new-order-menu {
+  margin-top: 20px;
+}
+
+#submit-order-btn {
+  @include button-style;
+}
+
 #new-customer{
   text-align: center;
   
@@ -188,6 +206,7 @@ section {
 #new-customer-btn {
   @include button-style;
   align-self: center;
+  margin-bottom: 20px;
   width: 50%;
 }
 
@@ -197,6 +216,7 @@ section {
 
 #create-customer-btn {
   @include button-style;
+  margin: 30px;
   width: 50%;
 }
 
@@ -206,6 +226,10 @@ section {
 
 #selected-user-rooms {
   @include tab-body-style;
+}
+
+#new-booking-btn {
+ @include button-style;
 }
 
 #booking-history {
@@ -222,23 +246,52 @@ section {
   overflow: scroll;
 }
 
+#most-rooms-avail {
+  margin-bottom: 20px;
+}
+
 #room-search-input{
-  font-size: 1em;
-  height: 50px;
+  font-size: 1.2em;
+  height: 60px;
+  margin-bottom: 10px;
   padding-left: 15px;
-  width: 300px;
+  width: 400px;
+  text-align: center;
 }
 
 #search-room-btn {
-  font-size: 1.2em;
-  height: 50px;
-  width: 300px;
+  @include button-style;
+  height: 60px;
+  width: 400px;
 }
 
 #room-search-form {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+#go-btn {
+  @include button-style;
+  height: 60px;
+  width: auto;
+}
+
+.book-btn {
+  @include button-style;
+  width: 80%;
+}
+
+.available-booking {
+  align-items: center;
+  border-radius: 4px;
+  border: solid black 2px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 10px auto;
+  padding: 32px;
+  width: 90%;
 }
 
 .booking {

@@ -117,7 +117,7 @@ $(document).ready(() => {
     e.preventDefault();
     const menu = hotel.orders.getMenu();
     menu.forEach(item => domUpdates.appendMenuOption(item));
-    $('#new-order-menu').slideDown(500);
+    $('#new-order-menu').slideToggle(500);
   });
 
   $('#submit-order-btn').click((e) => {

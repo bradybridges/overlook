@@ -43,8 +43,8 @@ const domUpdates = {
   appendOrder(order) {
     const orderElement = `<div class="order">
       <p class="order-item">${order.food}</p>
-      <p class="order-cost">$${order.totalCost}</p>
       <p class="order-id">UserID: ${order.userID}</p>
+      <p class="order-cost">$${order.totalCost}</p>
       </div>`;
     $('#orders-container').append(orderElement);
   },
@@ -71,7 +71,7 @@ const domUpdates = {
 
   appendDayWithMostBookings(hotel) {
     const mostBookingsDay = hotel.rooms.returnDayWithMostBookingsAvail();
-    $('#most-rooms-avail').text(`Date: ${mostBookingsDay.date} --- Rooms Avail: ${mostBookingsDay.bookingsAvail}`);
+    $('#most-rooms-avail').text(`${mostBookingsDay.date}: ${mostBookingsDay.bookingsAvail} Available Bookings`);
   },
 
   appendRoomSearchResults(results) {
@@ -93,11 +93,10 @@ const domUpdates = {
   },
 
   selectedUserHandler(name, hotel) {
-    this.resetCustomerSearch();
+    this.resetCustomers();
     this.resetOrders();
     this.resetRooms();
     hotel.currentCustomer = name;
-    console.log(hotel.currentCustomer);
     this.appendSelectedUserData(name, hotel);
   },
 
@@ -108,6 +107,7 @@ const domUpdates = {
     this.appendSelectedUserOrders(user.id, hotel);
     $('#onload-rooms-data').hide();
     this.appendUserRoomData(name, hotel);
+    this.showAddOrderHandler(user.id, hotel);
   },
 
   appendSelectedUserOrders(userID, hotel) {
@@ -155,15 +155,20 @@ const domUpdates = {
     $('#all-time-orders').append(element);
   },
 
-  resetCustomerSearch() {
+  resetCustomers() {
     $('#search-results').addClass('display-none').children().remove();
     $('#customer-search-input').val('');
+    this.clearInputs([$('#first-name-input'), $('#last-name-input')]);
+    $('#new-customer').hide();
+    $('#new-customer-btn').show();
   },
 
   resetOrders() {
     $('.order').remove();
     $('#no-orders-today').remove();
     $('#no-order-history').remove();
+    $('#add-order-btn').hide();
+    $('#new-order-menu').hide();
   },
 
   appendUserRoomData(name, hotel) {
