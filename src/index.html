@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Ov</title>
+    <title>Overlook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Monda:400,700&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
-      <h1 id="main-header">Outlook App</h1>
+      <h1 id="main-header">Overlook</h1>
       <span id="header-date"></span>
     </header>
     <h2 id="selected-user" class="display-none"><span id="x-button">&times;</span></h2>
@@ -35,15 +35,13 @@
       </section>
       <section id="customers" class="display-none">
         <div id="customers-info-container">
-          <section id="customers-search-container">
-            <input id="customer-search-input" type="text" name="customer search" placeholder="Search For A Customer">
-            <button id="customers-search-btn">Search</button>
-          </section>
+          <label>Search For Customer</label>
+          <input id="customer-search-input" type="text" name="customer search" placeholder="Search For A Customer">
           <div id="search-results" class="display-none"></div>
           <p id="or-p">OR</p>
           <button id="new-customer-btn">Create New Customer</button>
           <div id="new-customer" class="display-none">
-            <h2>New Customer</h2>
+            <h4>New Customer</h4>
             <form id="new-customer-form">
               <label for='first-name-input'>First Name</label>
               <input id="first-name-input" type="text" name="first-name-input">
@@ -57,9 +55,11 @@
       <section id="orders" class="display-none">
         <section id="onload-order-data">
           <h2 id="orders-header">Todays Room Service Orders</h2>
-          <h3 id="todays-service-revenue"></h3>
-          <h3 id="total-service-revenue"></h3>
-          <section id="orders-container"></section>
+          <h4 id="todays-service-revenue"></h4>
+          <h4 id="total-service-revenue"></h4>
+          <section id="orders-container">
+            <h4>Todays Orders</h4>
+          </section>
         </section>
         <section id="selected-user-orders" class="display-none">
           <div id="todays-orders">
@@ -91,7 +91,7 @@
               <option value="junior suite">Junior Suite</option>
               <option value="residential suite">Residential Suite</option>
             </select>
-            <button id="go-btn">Go</button>
+            <button id="go-btn">Show Rooms</button>
           </section>
           <section id="booking-history">
             <h3>Booking History</h3>
@@ -101,18 +101,19 @@
           <div id="room-search-results"></div>
           <form id="room-search-form">
             <h3>Search For Rooms Available</h3>
-            <label for="room-search-input">Enter Date(yyyy/mm/dd)</label>
+            <label for="room-search-input">Enter Date</label>
             <input id="room-search-input" type="text" name="room-search-input" placeholder="yyyy/mm/dd">
             <button id="search-room-btn">Search</button>
           </form>
-          <section>
-            <h3>Most Popular Booking Day</h3>
-            <p id="most-popular-booking-day"></p>
-          </section>
-          <section>
-            <h3>Day With Most Bookings Available</h3>
-            <p id="most-rooms-avail"></p>
-          </section>
+          <section id="onload-booking-data">
+            <section>
+              <h3>Most Popular Booking Day</h3>
+              <p id="most-popular-booking-day"></p>
+            </section>
+            <section>
+              <h3>Day With Most Bookings Available</h3>
+              <p id="most-rooms-avail"></p>
+            </section>
         </section>
       </section>
     </section>
