@@ -2,7 +2,6 @@ import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png';
 import domUpdates from './domUpdates';
-import eventListeners from './eventListeners';
 import Hotel from './Hotel';
 
 let hotel;
@@ -34,7 +33,18 @@ $(document).ready(() => {
     domUpdates.updateHome(date, hotel);
     domUpdates.appendAllRoomServiceOrders(date, hotel);
     domUpdates.appendRoomData(hotel);
+    $('.loader').remove();
   },500);
+
+  $('nav').click((e) => {
+  if(e.target.dataset.toggle) {
+    const toggleTarget = e.target.dataset.toggle;
+    $(e.target).addClass('active-button');
+    $(e.target).siblings().removeClass('active-button');
+    $(toggleTarget).siblings().hide();
+    $(toggleTarget).fadeIn(500);
+  } 
+  });
 
   $('#customer-search-input').keyup((e) => {
   const searchValue = $(e.target).val().toLowerCase();
@@ -98,6 +108,7 @@ $(document).ready(() => {
   });
 
   $('#go-btn').click(() => {
+    $('.available-booking').remove();
     const type = $('#room-type-select').val();
     let roomsAvail = hotel.rooms.returnRoomsAvailableOfType(date, type);
     domUpdates.appendAvailableBookings(roomsAvail, hotel);
