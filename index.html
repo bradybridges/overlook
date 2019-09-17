@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Overlook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Monda:400,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1 id="main-header">Overlook</h1>
+    </header>
+    <section id="selected-user-container" class="display-none">
+      <h2 id="selected-user" class="display-none"></h2>
+      <button id="calc-bill-btn">Calculate Bill</button>
+    </section>
+    <div id="bill-div" class="display-none flex-bill">
+      <table id="bill-table">
+        <tr>
+          <th>Item</th>
+          <th>Bill</th>
+        </tr>
+      </table>
+      <button id="hide-bill-btn">Hide</button>
+    </div>
+
+    <nav>
+      <button id="home-btn" class="tab active-button" data-toggle='#home'>Home</button>
+      <button id="customers-btn" class="tab" data-toggle='#customers'>Customers</button>
+      <button id="orders-btn" class="tab" data-toggle='#orders'>Orders</button>
+      <button id="rooms-btn" class="tab" data-toggle='#rooms'>Rooms</button>
+    </nav>
+    <section>
+      <div class="loader"></div>
+      <section id="home">
+      <h2 id="home-date"></h2>
+      <section id="home-info-container">
+        <div id="room-info">
+          <h3>Today's Booking Data</h2>
+          <p id="percent-booked"></p>
+          <p id="num-rooms-avail"></p>
+        </div>
+        <div id="revenue-info">
+          <h3>Expected Revenue Today</h2>
+          <p id="revenue"></p>
+        </div>
+      </section>
+      </section>
+      <section id="customers" class="display-none">
+        <div id="customers-info-container">
+          <label>Search For Customer</label>
+          <input id="customer-search-input" type="text" name="customer search" placeholder="Search For A Customer">
+          <div id="search-results" class="display-none"></div>
+          <p id="or-p">OR</p>
+          <button id="new-customer-btn">Create New Customer</button>
+          <div id="new-customer" class="display-none">
+            <h4>New Customer</h4>
+            <form id="new-customer-form">
+              <label for='first-name-input'>First Name</label>
+              <input id="first-name-input" type="text" name="first-name-input">
+              <label for="last-name-input">Last Name</label>
+              <input id="last-name-input" type="text" name="last-name-input">
+              <button id="create-customer-btn" disabled>Create Customer</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section id="orders" class="display-none">
+        <section id="onload-order-data">
+          <h2 id="orders-header">Today's Room Service</h2>
+          <h4 id="todays-service-revenue"></h4>
+          <h4 id="total-service-revenue"></h4>
+          <section id="orders-container">
+            <h4 id="todays-orders-header">Today's Orders</h4>
+          </section>
+        </section>
+        <section id="selected-user-orders" class="display-none">
+          <div id="todays-orders">
+            <h3>Orders Today</h3>
+            <button id="add-order-btn" class="display-none">&plus; Order</button>
+            <div id="new-order-menu" class="display-none">
+              <label for="order selection">Select Order</label>
+              <select name="order selection" id="order-select">
+              </select>
+              <button id="submit-order-btn">Submit Order</button>
+            </div>
+          </div>
+          <div id="all-time-orders">
+            <h3>All Orders</h3>
+          </div>
+        </section>
+      </section>
+      <section id="rooms" class="display-none">
+        <section id="selected-user-rooms" class="display-none">
+          <section id="todays-booking">
+            <h3>Today's Booking</h3>
+            <button id='new-booking-btn' class='display-none'>Create New Booking</button>
+            <button id="cancel-booking-btn" class="display-none">Cancel Booking</button>
+            <button id="switch-rooms-btn" class="display-none">Switch Rooms</button>
+          </section>
+          <section id="new-booking" class="display-none">
+            <h3>Select Room type</h3>
+            <select id="room-type-select">
+              <option value="single room">Single Room</option>
+              <option value="suite">Suite</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="residential suite">Residential Suite</option>
+            </select>
+            <button id="go-btn">Show Rooms</button>
+          </section>
+          <section id="booking-history">
+            <h3>Booking History</h3>
+          </section>
+        </section>
+        <section id="onload-rooms-data">
+          <div id="room-search-results"></div>
+            <button id="hide-results-btn" class="display-none">Hide</button>
+          <form id="room-search-form">
+            <h3>Search For Rooms Available</h3>
+            <label for="room-search-input">Enter Date</label>
+            <input id="room-search-input" type="text" name="room-search-input" placeholder="yyyy/mm/dd">
+            <button id="search-room-btn">Search</button>
+          </form>
+          <section id="onload-booking-data">
+            <section>
+              <h3>Most Popular Booking Day</h3>
+              <p id="most-popular-booking-day"></p>
+            </section>
+            <section>
+              <h3>Day With Most Bookings Available</h3>
+              <p id="most-rooms-avail"></p>
+            </section>
+        </section>
+      </section>
+    </section>
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
