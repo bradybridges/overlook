@@ -153,6 +153,13 @@ $(document).ready(() => {
     domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
   });
 
+  $('#switch-rooms-btn').click(() => {
+    const roomNum = parseInt($('#today-booking-p')[0].dataset.room);
+    hotel.rooms.cancelBooking(roomNum);
+    $('#today-booking-p').remove();
+    $('#new-booking').show();
+  });
+
   function addCancelOrderEventListener() {
     $('.cancel-order-btn').click((e) => {
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
@@ -170,7 +177,17 @@ $(document).ready(() => {
     e.target.closest('.order').remove();
     domUpdates.updateHome(hotel.date, hotel);
   });
+
+  $('#calc-bill-btn').click(() => {
+    const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+    const roomBill = hotel.rooms.returnUserBookingBill(userID);
+    const ordersBill = hotel.orders.returnUserOrdersBill(userID);
+    console.log(roomBill + ordersBill);
+    domUpdates.appendBill(roomBill, ordersBill);
+    $('#bill-div').slideDown(250);
+  });
+
+  $('#hide-bill-btn').click(() => {
+    $('#bill-div').slideUp(250);
+  })
 });
-
-
- 
