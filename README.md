@@ -1,4 +1,4 @@
-# Game Time - Jeopardy
+# Overlook - A hotel management app
 View the live page [here.](https://bradybridges.github.io/overlook/)
 
 # Developer
