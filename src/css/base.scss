@@ -464,3 +464,28 @@ td {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+@media only screen and (max-width: 600px) {
+  nav{
+    flex-direction: column;
+  }
+
+  .tab {
+    align-self: center;
+    width: 90%;
+  }
+
+  #selected-user-container {
+    flex-direction: column;
+  }
+
+  #customer-search-input, #new-customer-btn {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #add-order-btn, #switch-rooms-btn, #cancel-booking-btn, #room-search-input, #search-room-btn, #new-booking-btn, #submit-order-btn, #room-type-select, #order-select {
+    width: 250px;
+  }
+}
