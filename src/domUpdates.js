@@ -275,7 +275,6 @@ const domUpdates = {
     const userID = hotel.customers.findCustomer(currentUserName).id;
     let roomNumber = parseInt($(e.target).closest('.available-booking').children()[0].dataset.roomnum); 
     hotel.rooms.bookRoom(userID, roomNumber);
-    console.log(hotel.rooms.bookings[hotel.rooms.bookings.length - 1]);
   },
 
   postBookingDomUpdates(name, hotel) {

@@ -366,6 +366,21 @@ td {
   flex-direction: column;
 }
 
+.room-search-result {
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#hide-results-btn {
+  @include button-style;
+  &:hover {
+    @include active-button;
+  }
+}
+
 #go-btn {
   @include button-style;
   height: 60px;
@@ -402,6 +417,7 @@ td {
   align-items: center;
   border-radius: 4px;
   border: solid black 2px;
+  box-shadow: 5px -10px 8px $header-color;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -447,4 +463,29 @@ td {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media only screen and (max-width: 600px) {
+  nav{
+    flex-direction: column;
+  }
+
+  .tab {
+    align-self: center;
+    width: 90%;
+  }
+
+  #selected-user-container {
+    flex-direction: column;
+  }
+
+  #customer-search-input, #new-customer-btn {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #add-order-btn, #switch-rooms-btn, #cancel-booking-btn, #room-search-input, #search-room-btn, #new-booking-btn, #submit-order-btn, #room-type-select, #order-select {
+    width: 250px;
+  }
 }
