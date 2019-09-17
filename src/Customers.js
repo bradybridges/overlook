@@ -13,17 +13,17 @@ class Customers {
   }
 
   createCustomer(firstName, lastName) {
-     const name = this.returnFullName(firstName, lastName);
-     const doesCustomerExist = this.findCustomer(name) !== undefined;
+    const name = this.returnFullName(firstName, lastName);
+    const doesCustomerExist = this.findCustomer(name) !== undefined;
     
-     if(!doesCustomerExist) {
+    if (!doesCustomerExist) {
       const id = this.customers.length + 1;
       const newCustomer = {id, name};
       this.customers.push(newCustomer);
       return true;
-     } else {
+    } else {
       return false;
-     }
+    }
   }
 
   capitalizeFirst(name) {

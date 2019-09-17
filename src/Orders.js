@@ -31,7 +31,7 @@ class Orders {
 
   findUserOrdersToday(userID) {
     return this.orders.filter(order => {
-      if(order.userID === userID && order.date === this.date) {
+      if (order.userID === userID && order.date === this.date) {
         return true;
       } else {
         return false;
@@ -41,7 +41,7 @@ class Orders {
 
   getMenu() {
     const menu = this.orders.reduce((menu, currentOrder) => {
-      if(!menu.find(morsel => morsel.food === currentOrder.food)){
+      if (!menu.find(morsel => morsel.food === currentOrder.food)) {
         const totalCost = parseFloat(currentOrder.totalCost).toFixed(2);
         menu.push({food: currentOrder.food, totalCost})
       }
@@ -61,7 +61,7 @@ class Orders {
 
   cancelOrder(userID, itemName) {
     const orderIndex = this.orders.findIndex(order => {
-      if(order.userID === userID && order.food === itemName && order.date === this.date) {
+      if (order.userID === userID && order.food === itemName && order.date === this.date) {
         return true;
       } else {
         return false;
@@ -72,7 +72,7 @@ class Orders {
 
   returnUserOrdersBill(userID) {
     const orders = this.orders.filter(order => {
-      if(order.date === this.date && order.userID === userID){
+      if (order.date === this.date && order.userID === userID) {
         return true;
       } else {
         return false;
