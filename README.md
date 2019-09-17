@@ -44,7 +44,7 @@ npm install
 1. To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see the page.
 
 ## Screenshot
-
+![screenshot](https://github.com/bradybridges/overlook/blob/master/images/screenshot.png)
 
 
 
