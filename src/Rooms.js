@@ -112,7 +112,7 @@ class Rooms {
   }
 
   returnRoomCost(roomNum) {
-    return this.rooms.find(room => room.roomNumber === roomNum).costPerNight;
+    return this.rooms.find(room => room.number === roomNum).costPerNight;
   }
 
   bookRoom(userID, roomNumber) {
@@ -133,16 +133,11 @@ class Rooms {
   returnUserBookingBill(userID) {
     const room = this.bookings.find(booking => (booking.date === this.date && booking.userID === userID));
     if(room) {
-      return this.returnRoomPrice(room.roomNumber);
+      return this.returnRoomCost(room.roomNumber);
     } else {
       return 0;
     }
     
-  }
-
-  returnRoomPrice(roomNumber) {
-    const room = this.rooms.find(room => room.number === roomNumber);
-      return room.costPerNight;
   }
 
 }

@@ -82,6 +82,35 @@ describe('Rooms', () => {
     })
   });
 
+  describe('returnRoomCost', () => {
+    it('should return price of a room', () => {
+      expect(rooms.returnRoomCost(5)).to.equal(265.03);
+    })
+  });
+
+  describe('bookRoom', () => {
+    it('should book a room', () => {
+      rooms.bookRoom(1, 23);
+      expect(rooms.bookings.length).to.equal(11)
+    })
+  });
+
+  describe('cancelBooking', () => {
+    it('should cancel a booking', () => {
+      expect(rooms.bookings.length).to.equal(11)
+      rooms.cancelBooking(23, "2019/10/19");
+      expect(rooms.bookings.length).to.equal(10);
+    });
+  });
+
+  describe('returnUserBookingBill', () => {
+    it('shold return bill for room', () => {
+      expect(rooms.returnUserBookingBill(1)).to.equal(0);
+      rooms.bookRoom(1, 23);
+      expect(rooms.returnUserBookingBill(1)).to.equal(246.65);
+    });
+  });
+
 });
 
 
