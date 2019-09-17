@@ -127,9 +127,7 @@ class Rooms {
     } else {
       bookingIndex = this.bookings.findIndex(booking => (booking.date === date && booking.roomNumber === roomNumber));
     }
-    console.log(this.bookings.length);
     this.bookings.splice(bookingIndex, 1);
-    console.log(this.bookings.length);
   }
 
 }

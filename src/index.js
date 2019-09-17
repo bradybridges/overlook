@@ -153,6 +153,14 @@ $(document).ready(() => {
     domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
   });
 
+  $('#switch-rooms-btn').click(() => {
+    const roomNum = parseInt($('#today-booking-p')[0].dataset.room);
+    hotel.rooms.cancelBooking(roomNum);
+    $('#today-booking-p').remove();
+    $('#new-booking').show();
+    // domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
+  });
+
   function addCancelOrderEventListener() {
     $('.cancel-order-btn').click((e) => {
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
@@ -171,6 +179,3 @@ $(document).ready(() => {
     domUpdates.updateHome(hotel.date, hotel);
   });
 });
-
-
- 

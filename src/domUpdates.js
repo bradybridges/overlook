@@ -185,6 +185,7 @@ const domUpdates = {
       const element = `<p id='today-booking-p' data-room='${bookingToday.roomNumber}' class='booking-item'>Room ${bookingToday.roomNumber}`;
       $('#todays-booking').append(element);
       $('#cancel-booking-btn').show();
+      $('#switch-rooms-btn').show();
     } else {
       const element = `
         <p id="no-booking" class="booking-item">No booking for user today</p>
@@ -224,6 +225,7 @@ const domUpdates = {
     $('.booking-item').remove();
     $('.booking').remove();
     $('#cancel-booking-btn').hide();
+    $('#switch-rooms-btn').hide()
   },
 
   createCustomer(hotel) {
