@@ -5,7 +5,6 @@ import domUpdates from './domUpdates';
 import Hotel from './Hotel';
 
 let hotel;
-const data = [];
 const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1 < 10 ? '0'.concat(new Date().getMonth() + 1) : new Date().getMonth() + 1 < 10}/${new Date().getDate()}`
 // new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
 const formatData = (data) => {
@@ -33,29 +32,29 @@ $(document).ready(() => {
     domUpdates.appendAllRoomServiceOrders(date, hotel);
     domUpdates.appendRoomData(hotel);
     $('.loader').remove();
-  },500);
+  }, 500);
 
   $('nav').click((e) => {
-  if(e.target.dataset.toggle) {
-    const toggleTarget = e.target.dataset.toggle;
-    $(e.target).addClass('active-button');
-    $(e.target).siblings().removeClass('active-button');
-    $(toggleTarget).siblings().hide();
-    $('#bill-div').slideUp(250);
-    $(toggleTarget).fadeIn(500);
-  } 
+    if (e.target.dataset.toggle) {
+      const toggleTarget = e.target.dataset.toggle;
+      $(e.target).addClass('active-button');
+      $(e.target).siblings().removeClass('active-button');
+      $(toggleTarget).siblings().hide();
+      $('#bill-div').slideUp(250);
+      $(toggleTarget).fadeIn(500);
+    }  
   });
 
   $('#customer-search-input').keyup((e) => {
-  const searchValue = $(e.target).val().toLowerCase();
-  
-  if(searchValue !== '') {
-    $('#search-results').removeClass('display-none');
-    domUpdates.updateSearchResults(searchValue, hotel.data.users);
-  } else {
-    $('#search-results').children().remove();
-    $('#search-results').addClass('display-none');
-  }
+    const searchValue = $(e.target).val().toLowerCase();
+    
+    if (searchValue !== '') {
+      $('#search-results').removeClass('display-none');
+      domUpdates.updateSearchResults(searchValue, hotel.data.users);
+    } else {
+      $('#search-results').children().remove();
+      $('#search-results').addClass('display-none');
+    }
   });
 
   $('#new-customer-btn').click((e) => {
@@ -74,7 +73,7 @@ $(document).ready(() => {
   });
 
   $('#search-results').click((e) => {
-    if(e.target.classList.contains('search-result') && e.target.dataset.id !== 'null') {
+    if (e.target.classList.contains('search-result') && e.target.dataset.id !== 'null') {
       userSelectedDomUpdates(e);
       hotel.currentCustomer = $(e.target).text();
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
@@ -91,10 +90,10 @@ $(document).ready(() => {
   $('#new-customer').keyup(() => {
     const firstName = $('#first-name-input').val();
     const lastName = $('#last-name-input').val();
-    if(firstName !== '' && lastName !== '') {
+    if (firstName !== '' && lastName !== '') {
       $('#create-customer-btn').prop('disabled', false);
     } else {
-      $('#create-customer-btn').prop('disabled',true);
+      $('#create-customer-btn').prop('disabled', true);
     }
   });
 
@@ -119,7 +118,7 @@ $(document).ready(() => {
   });
 
   $('#new-booking').click((e) => {
-    if(e.target.classList.contains('book-btn')) {
+    if (e.target.classList.contains('book-btn')) {
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
       domUpdates.newBookingHandler(hotel, e);
       domUpdates.postBookingDomUpdates(hotel.currentCustomer, hotel);
@@ -135,7 +134,7 @@ $(document).ready(() => {
     $('#new-order-menu').slideToggle(500);
   });
 
-  $('#submit-order-btn').click((e) => {
+  $('#submit-order-btn').click(() => {
     const order = returnOrderObject();
     hotel.orders.addOrder(order);
     domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
@@ -189,9 +188,9 @@ $(document).ready(() => {
     domUpdates.appendBill(roomBill, ordersBill);
     $('#bill-div').slideDown({
       start: function () {
-      $(this).css({
-      display: "flex"
-      })
+        $(this).css({
+          display: "flex"
+        })
       } 
     });
   });

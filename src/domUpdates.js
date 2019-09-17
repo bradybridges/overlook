@@ -11,7 +11,7 @@ const domUpdates = {
   updateSearchResults(searchValue, users) {
     $('#search-results').children().remove();
     let results = users.filter(user => user.name.toLowerCase().includes(searchValue));
-    if(results.length > 0) {
+    if (results.length > 0) {
       results.forEach(customer => this.appendSearchResult(customer));
     } else {
       this.appendSearchResult({name: 'No Customers Found', id: null});
@@ -32,7 +32,7 @@ const domUpdates = {
     const orders = hotel.orders.returnTodaysOrders();
     this.appendAllTimeOrderRevenue(hotel);
     this.appendOrdersRevenueToday(hotel);
-    if(orders.length > 0) {
+    if (orders.length > 0) {
       orders.forEach(order => this.appendOrder(order));
     } else {
       $('#orders-container').append('<h2> No Orders Today</h2>');
@@ -120,7 +120,7 @@ const domUpdates = {
   },
 
   appendTodaysOrders(orders) {
-    if(orders.length > 0){
+    if (orders.length > 0) {
       orders.forEach(order => this.appendTodayOrder(order)); 
     } else {
       $('#todays-orders').append('<h4 id="no-orders-today">No Orders Today!</h4>');
@@ -141,7 +141,7 @@ const domUpdates = {
   },
 
   appendAllTimeOrders(orders) {
-    if(orders.length > 0) {
+    if (orders.length > 0) {
       orders.forEach(order => this.appendAllTimeOrder(order));
     } else {
       $('#all-time-orders').append('<h4 id="no-order-history"> User has never ordered</h4>');
@@ -183,7 +183,7 @@ const domUpdates = {
 
   appendBookingToday(userID, hotel) {
     const bookingToday = hotel.rooms.returnUserBookingToday(userID);
-    if(bookingToday) {
+    if (bookingToday) {
       const element = `<p id='today-booking-p' data-room='${bookingToday.roomNumber}' class='booking-item'>Room ${bookingToday.roomNumber}`;
       $('#todays-booking').append(element);
       $('#cancel-booking-btn').show();
@@ -199,14 +199,14 @@ const domUpdates = {
 
   showAddOrderHandler(userID, hotel) {
     const bookingToday = hotel.rooms.returnUserBookingToday(userID);
-    if(bookingToday) {
+    if (bookingToday) {
       $('#add-order-btn').show();
     }
   },
 
   appendBookingHistory(userID, hotel) {
     const allBookingData = hotel.rooms.returnAllUserBookings(userID);
-    if(allBookingData.length > 0){
+    if (allBookingData.length > 0) {
       allBookingData.forEach(booking => this.appendBooking(booking));
     } else {
       $('#booking-history').append('<p id="no-booking-history" class="booking-item">No Booking History For User</p>');
@@ -234,7 +234,7 @@ const domUpdates = {
     const firstName = $('#first-name-input').val();
     const lastName = $('#last-name-input').val();
     const status = hotel.customers.createCustomer(firstName, lastName);
-    if(status) {
+    if (status) {
       $('#new-customer').fadeOut(250);
       $('#new-customer-btn').show();
       this.clearInputs([$('#first-name-input'), $('#last-name-input')]);
@@ -249,7 +249,7 @@ const domUpdates = {
   },
 
   appendAvailableBookings(roomsAvail, hotel) {
-    if(roomsAvail.length > 0) {
+    if (roomsAvail.length > 0) {
       roomsAvail.forEach(room => this.appendAvailableRoom(room));
     } else {
       const date = hotel.rooms.date;

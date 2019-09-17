@@ -10,7 +10,7 @@ class Rooms {
     let max = 0;
     this.bookings.forEach(booking => {
       const numBookings = this.bookings.filter(book => book.date === booking.date).length;
-      if(numBookings > max) {
+      if (numBookings > max) {
         max = numBookings;
         mostPopularDate = booking.date;
       }
@@ -24,7 +24,7 @@ class Rooms {
     let date = '';
     upcomingBookings.forEach(booking => {
       let numBookings = this.bookings.filter(book => book.date === booking.date).length;
-      if(50 - numBookings > max) {
+      if (50 - numBookings > max) {
         max = 50 - numBookings;
         date = booking.date;
       }
@@ -38,7 +38,7 @@ class Rooms {
     let upcomingBookings = this.bookings.filter(booking => {
       let bookingSplitDate = booking.date.split('/');
       bookingSplitDate = bookingSplitDate.map(date => parseInt(date));
-      if(bookingSplitDate[0] >= splitDate[0] && (bookingSplitDate[1] > splitDate[1] || (bookingSplitDate[1] === splitDate[1] && bookingSplitDate[2] > splitDate[2]))) {
+      if (bookingSplitDate[0] >= splitDate[0] && (bookingSplitDate[1] > splitDate[1] || (bookingSplitDate[1] === splitDate[1] && bookingSplitDate[2] > splitDate[2]))) {
         return true;
       } else {
         return false;
@@ -63,7 +63,7 @@ class Rooms {
       return rooms;
     }, []);
     return this.rooms.filter(room => {
-      if(!roomsBooked.includes(room.number) && room.roomType === type) {
+      if (!roomsBooked.includes(room.number) && room.roomType === type) {
         return true;
       } else {
         return false;
@@ -97,7 +97,7 @@ class Rooms {
 
   returnUserBookingToday(userID) {
     const currentBooking =  this.bookings.filter(booking => {
-      if(booking.date === this.date && booking.userID === userID) {
+      if (booking.date === this.date && booking.userID === userID) {
         return true;
       } else {
         return false;
@@ -122,7 +122,7 @@ class Rooms {
 
   cancelBooking(roomNumber, date) {
     let bookingIndex;
-    if(!date) {
+    if (!date) {
       bookingIndex = this.bookings.findIndex(booking => (booking.date === this.date && booking.roomNumber === roomNumber));
     } else {
       bookingIndex = this.bookings.findIndex(booking => (booking.date === date && booking.roomNumber === roomNumber));
@@ -132,7 +132,7 @@ class Rooms {
 
   returnUserBookingBill(userID) {
     const room = this.bookings.find(booking => (booking.date === this.date && booking.userID === userID));
-    if(room) {
+    if (room) {
       return this.returnRoomCost(room.roomNumber);
     } else {
       return 0;
