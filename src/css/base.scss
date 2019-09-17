@@ -68,12 +68,57 @@ select {
   width: 400px;
 }
 
+table {
+  margin: 20px auto;
+  text-align: center;
+  width: 50%;
+}
+
+th {
+  color: $primary-color;
+  font-size: 2.5em;
+  text-decoration: underline;
+}
+
+td {
+  border-top: solid $primary-color 1px;
+  color: $primary-color;
+  font-size: 2em;
+}
+
+#bill-div {
+  margin-bottom: 20px;
+}
+
+#hide-bill-btn {
+  @include button-style;
+  &:hover {
+    @include active-button;
+  }
+}
+
+.flex-bill {
+  align-items: center;
+  flex-direction: column;
+}
+
 #selected-user {
-  background-color: #232931;
-  border: solid 1px #fe5722;
-  border-radius: 4px;
   margin: 0;
   text-decoration: none;
+}
+
+.flex-selected-user {
+  align-items: center;
+  background-color: #232931;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#calc-bill-btn {
+  @include button-style;
+  &:hover {
+    @include active-button;
+  }
 }
 
 .tab {
@@ -197,6 +242,22 @@ select {
   }
 }
 
+.cancel-order-btn {
+  align-self: center;
+  font-size: 3.5em;
+  height: 100px;
+  transition: transform .2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+}
+
+.order-item {
+  align-self: center;
+  margin: 0;
+}
+
 #new-order-menu {
   margin-top: 20px;
 }
@@ -239,6 +300,9 @@ select {
   @include button-style;
   margin: 30px;
   width: 50%;
+  &:hover {
+    @include active-button;
+  }
 }
 
 #onload-rooms-data {
@@ -306,6 +370,20 @@ select {
   @include button-style;
   height: 60px;
   width: auto;
+  &:hover {
+    @include active-button;
+  }
+}
+
+#cancel-booking-btn {
+  @include button-style;
+  &:hover {
+    @include active-button;
+  }
+}
+
+#switch-rooms-btn {
+  @include button-style;
   &:hover {
     @include active-button;
   }

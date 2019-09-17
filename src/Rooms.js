@@ -131,14 +131,18 @@ class Rooms {
   }
 
   returnUserBookingBill(userID) {
-    const roomNumber = this.bookings.find(booking => (booking.date === this.date && booking.userID === userID)).roomNumber;
-    return this.returnRoomPrice(roomNumber);
+    const room = this.bookings.find(booking => (booking.date === this.date && booking.userID === userID));
+    if(room) {
+      return this.returnRoomPrice(room.roomNumber);
+    } else {
+      return 0;
+    }
+    
   }
 
   returnRoomPrice(roomNumber) {
     const room = this.rooms.find(room => room.number === roomNumber);
-    console.log(room);
-    return room.costPerNight;
+      return room.costPerNight;
   }
 
 }

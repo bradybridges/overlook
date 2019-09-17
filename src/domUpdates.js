@@ -103,7 +103,8 @@ const domUpdates = {
   appendSelectedUserData(name, hotel) {
     let user = hotel.customers.findCustomer(name);
     $('#selected-user').text(`Current Customer: ${name}`).show();
-    $('#selected-user-container').show();
+    $('#selected-user-container').removeClass('display-none');
+    $('#selected-user-container').addClass('flex-selected-user');
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
     $('#onload-rooms-data').hide();
@@ -133,7 +134,7 @@ const domUpdates = {
       <div class="order" data-date="${order.date}">
         <p class="order-item">${order.date}</p>
         <p class="order-item">${order.food}</p>
-        <p class="order-item">${order.totalCost}</p>
+        <p class="order-item">$${order.totalCost}</p>
         <span  data-item="${order.food}" class="cancel-order-btn">&times;</span
       </div>`;
     $('#todays-orders').append(element);
@@ -234,7 +235,6 @@ const domUpdates = {
     const lastName = $('#last-name-input').val();
     const status = hotel.customers.createCustomer(firstName, lastName);
     if(status) {
-      alert('customer created...');
       $('#new-customer').fadeOut(250);
       $('#new-customer-btn').show();
       this.clearInputs([$('#first-name-input'), $('#last-name-input')]);
@@ -302,7 +302,7 @@ const domUpdates = {
 
   appendBill(roomBill, ordersBill) {
     $('.bill-item').remove();
-    const total = roomBill + ordersBill;
+    const total = (roomBill + ordersBill).toFixed(2);
     this.appendBillItem('Room', roomBill);
     this.appendBillItem('Orders', ordersBill);
     this.appendBillItem('Total', total);
