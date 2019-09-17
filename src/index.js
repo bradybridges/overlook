@@ -136,6 +136,7 @@ $(document).ready(() => {
     hotel.orders.addOrder(order);
     domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
     domUpdates.updateHome(hotel.date, hotel);
+    addCancelOrderEventListener();
   });
 
   function returnOrderObject() {
@@ -145,9 +146,31 @@ $(document).ready(() => {
     const date = hotel.date;
     return {date, food, totalCost, userID};
   }
+
+  $('#cancel-booking-btn').click(() => {
+    const roomNum = parseInt($('#today-booking-p')[0].dataset.room);
+    hotel.rooms.cancelBooking(roomNum);
+    domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
+  });
+
+  function addCancelOrderEventListener() {
+    $('.cancel-order-btn').click((e) => {
+      const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+      const item = e.target.closest('.order').children[1].innerText;
+      hotel.orders.cancelOrder(userID, item);
+      e.target.closest('.order').remove();
+      domUpdates.updateHome(hotel.date, hotel);
+    });
+  }
+
+  $('.cancel-order-btn').click((e) => {
+    const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+    const item = e.target.closest('.order').children[1].innerText;
+    hotel.orders.cancelOrder(userID, item);
+    e.target.closest('.order').remove();
+    domUpdates.updateHome(hotel.date, hotel);
+  });
 });
-
-
 
 
  

@@ -59,8 +59,15 @@ class Orders {
     this.orders.push(order);
   }
 
-  removeOrder(userId, order) {
-    
+  cancelOrder(userID, itemName) {
+    const orderIndex = this.orders.findIndex(order => {
+      if(order.userID === userID && order.food === itemName && order.date === this.date) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    this.orders.splice(orderIndex, 1);
   }
 }
 
