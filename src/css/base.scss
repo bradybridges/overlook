@@ -242,6 +242,22 @@ td {
   }
 }
 
+.cancel-order-btn {
+  align-self: center;
+  font-size: 3.5em;
+  height: 100px;
+  transition: transform .2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+}
+
+.order-item {
+  align-self: center;
+  margin: 0;
+}
+
 #new-order-menu {
   margin-top: 20px;
 }
@@ -284,6 +300,9 @@ td {
   @include button-style;
   margin: 30px;
   width: 50%;
+  &:hover {
+    @include active-button;
+  }
 }
 
 #onload-rooms-data {
