@@ -42,6 +42,7 @@ $(document).ready(() => {
     $(e.target).addClass('active-button');
     $(e.target).siblings().removeClass('active-button');
     $(toggleTarget).siblings().hide();
+    $('#bill-div').slideUp(250);
     $(toggleTarget).fadeIn(500);
   } 
   });
@@ -76,6 +77,7 @@ $(document).ready(() => {
       hotel.currentCustomer = $(e.target).text();
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
       domUpdates.showAddOrderHandler(userID, hotel);
+      $('#bill-div').hide();
     }
   });
 
@@ -184,7 +186,13 @@ $(document).ready(() => {
     const ordersBill = hotel.orders.returnUserOrdersBill(userID);
     console.log(roomBill + ordersBill);
     domUpdates.appendBill(roomBill, ordersBill);
-    $('#bill-div').slideDown(250);
+    $('#bill-div').slideDown({
+      start: function () {
+      $(this).css({
+      display: "flex"
+      })
+      } 
+    });
   });
 
   $('#hide-bill-btn').click(() => {

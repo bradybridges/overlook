@@ -103,7 +103,8 @@ const domUpdates = {
   appendSelectedUserData(name, hotel) {
     let user = hotel.customers.findCustomer(name);
     $('#selected-user').text(`Current Customer: ${name}`).show();
-    $('#selected-user-container').show();
+    $('#selected-user-container').removeClass('display-none');
+    $('#selected-user-container').addClass('flex-selected-user');
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
     $('#onload-rooms-data').hide();
