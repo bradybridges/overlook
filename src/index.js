@@ -25,7 +25,6 @@ Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices').then(response => response.json()),
 ]).then(data => {
   hotel = new Hotel(formatData(data), date)
-  console.log(hotel.data);
 });
 
 $(document).ready(() => {
@@ -66,6 +65,9 @@ $(document).ready(() => {
 
   $('#search-room-btn').click((e) => {
     e.preventDefault();
+    $('#hide-results-btn').show();
+    $('.room-search-result').remove();
+    $('#room-search-results').show();
     const searchDate = $('#room-search-input').val();
     const results = hotel.rooms.returnRoomsAvailableOnDate(searchDate);
     domUpdates.appendRoomSearchResults(results);
@@ -184,7 +186,6 @@ $(document).ready(() => {
     const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
     const roomBill = hotel.rooms.returnUserBookingBill(userID);
     const ordersBill = hotel.orders.returnUserOrdersBill(userID);
-    console.log(roomBill + ordersBill);
     domUpdates.appendBill(roomBill, ordersBill);
     $('#bill-div').slideDown({
       start: function () {
@@ -197,5 +198,11 @@ $(document).ready(() => {
 
   $('#hide-bill-btn').click(() => {
     $('#bill-div').slideUp(250);
-  })
+  });
+
+  $('#hide-results-btn').click(() => {
+    $('#room-search-results').slideUp(250);
+    $('#hide-results-btn').fadeOut(250);
+    $('#room-search-input').val('');
+  });
 });

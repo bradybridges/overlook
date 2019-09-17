@@ -366,6 +366,21 @@ td {
   flex-direction: column;
 }
 
+.room-search-result {
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#hide-results-btn {
+  @include button-style;
+  &:hover {
+    @include active-button;
+  }
+}
+
 #go-btn {
   @include button-style;
   height: 60px;
@@ -402,6 +417,7 @@ td {
   align-items: center;
   border-radius: 4px;
   border: solid black 2px;
+  box-shadow: 5px -10px 8px $header-color;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
