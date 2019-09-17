@@ -153,7 +153,7 @@ const domUpdates = {
       <div class="order">
         <p class="order-item">${order.date}</p>
         <p class="order-item">${order.food}</p>
-        <p class="order-item">${order.totalCost}</p>
+        <p class="order-item">$${order.totalCost}</p>
       </div>`;
     $('#all-time-orders').append(element);
   },
