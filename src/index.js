@@ -6,7 +6,6 @@ import Hotel from './Hotel';
 
 let hotel;
 const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1 < 10 ? '0'.concat(new Date().getMonth() + 1) : new Date().getMonth() + 1 < 10}/${new Date().getDate()}`
-// new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
 const formatData = (data) => {
 
   const result = data.reduce((formattedData, dataset) => {
