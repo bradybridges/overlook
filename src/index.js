@@ -158,7 +158,8 @@ $(document).ready(() => {
       const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
       const item = e.target.closest('.order').children[1].innerText;
       hotel.orders.cancelOrder(userID, item);
-      domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
+      e.target.closest('.order').remove();
+      domUpdates.updateHome(hotel.date, hotel);
     });
   }
 
