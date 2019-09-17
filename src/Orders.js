@@ -69,6 +69,24 @@ class Orders {
     });
     this.orders.splice(orderIndex, 1);
   }
+
+  returnUserOrdersBill(userID) {
+    const orders = this.orders.filter(order => {
+      if(order.date === this.date && order.userID === userID){
+        return true;
+      } else {
+        return false;
+      }
+    })
+    return this.returnOrdersTotal(orders);
+  }
+
+  returnOrdersTotal(orders) {
+    return orders.reduce((total, order) => {
+      total += order.totalCost;
+      return total;
+    }, 0);
+  }
 }
 
 export default Orders;

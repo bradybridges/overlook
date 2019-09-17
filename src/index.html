@@ -9,9 +9,21 @@
   <body>
     <header>
       <h1 id="main-header">Overlook</h1>
-      <span id="header-date"></span>
     </header>
-    <h2 id="selected-user" class="display-none"><span id="x-button">&times;</span></h2>
+    <section id="selected-user-container" class="display-none">
+      <h2 id="selected-user" class="display-none"></h2>
+      <button id="calc-bill-btn">Calculate Bill</button>
+      <div id="bill-div" class="display-none">
+        <h4 id="user-bill-header"></h4>
+        <table id="bill-table">
+          <tr>
+            <th>Item</th>
+            <th>Bill</th>
+          </tr>
+        </table>
+        <button id="hide-bill-btn">Hide</button>
+      </div>
+    </section>
     <nav>
       <button id="home-btn" class="tab active-button" data-toggle='#home'>Home</button>
       <button id="customers-btn" class="tab" data-toggle='#customers'>Customers</button>

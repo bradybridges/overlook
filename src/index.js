@@ -158,7 +158,6 @@ $(document).ready(() => {
     hotel.rooms.cancelBooking(roomNum);
     $('#today-booking-p').remove();
     $('#new-booking').show();
-    // domUpdates.selectedUserHandler(hotel.currentCustomer, hotel);
   });
 
   function addCancelOrderEventListener() {
@@ -178,4 +177,17 @@ $(document).ready(() => {
     e.target.closest('.order').remove();
     domUpdates.updateHome(hotel.date, hotel);
   });
+
+  $('#calc-bill-btn').click(() => {
+    const userID = hotel.customers.findCustomer(hotel.currentCustomer).id;
+    const roomBill = hotel.rooms.returnUserBookingBill(userID);
+    const ordersBill = hotel.orders.returnUserOrdersBill(userID);
+    console.log(roomBill + ordersBill);
+    domUpdates.appendBill(roomBill, ordersBill);
+    $('#bill-div').slideDown(250);
+  });
+
+  $('#hide-bill-btn').click(() => {
+    $('#bill-div').slideUp(250);
+  })
 });

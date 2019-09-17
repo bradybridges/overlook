@@ -103,6 +103,7 @@ const domUpdates = {
   appendSelectedUserData(name, hotel) {
     let user = hotel.customers.findCustomer(name);
     $('#selected-user').text(`Current Customer: ${name}`).show();
+    $('#selected-user-container').show();
     $('#onload-order-data').hide();
     this.appendSelectedUserOrders(user.id, hotel);
     $('#onload-rooms-data').hide();
@@ -297,6 +298,24 @@ const domUpdates = {
   appendMenuOption(item) {
     const element = `<option data-price='${item.price}' value="${item.food}">${item.food} - $${item.totalCost}</option>`;
     $('#order-select').append(element);
+  },
+
+  appendBill(roomBill, ordersBill) {
+    $('.bill-item').remove();
+    const total = roomBill + ordersBill;
+    this.appendBillItem('Room', roomBill);
+    this.appendBillItem('Orders', ordersBill);
+    this.appendBillItem('Total', total);
+  },
+
+  appendBillItem(item, cost) {
+    const element = `
+      <tr class="bill-item">
+        <td>${item}</td>
+        <td>$${cost}</td>
+      </tr>
+    `;
+    $('#bill-table').append(element);
   },
 
 }

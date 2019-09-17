@@ -130,6 +130,17 @@ class Rooms {
     this.bookings.splice(bookingIndex, 1);
   }
 
+  returnUserBookingBill(userID) {
+    const roomNumber = this.bookings.find(booking => (booking.date === this.date && booking.userID === userID)).roomNumber;
+    return this.returnRoomPrice(roomNumber);
+  }
+
+  returnRoomPrice(roomNumber) {
+    const room = this.rooms.find(room => room.number === roomNumber);
+    console.log(room);
+    return room.costPerNight;
+  }
+
 }
 
 export default Rooms;
