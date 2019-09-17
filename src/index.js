@@ -31,7 +31,7 @@ $(document).ready(() => {
     domUpdates.appendAllRoomServiceOrders(date, hotel);
     domUpdates.appendRoomData(hotel);
     $('.loader').remove();
-  }, 500);
+  }, 800);
 
   $('nav').click((e) => {
     if (e.target.dataset.toggle) {
