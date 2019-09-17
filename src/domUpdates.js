@@ -129,10 +129,11 @@ const domUpdates = {
 
   appendTodayOrder(order) {
     const element = `
-      <div class="order">
+      <div class="order" data-date="${order.date}">
         <p class="order-item">${order.date}</p>
         <p class="order-item">${order.food}</p>
         <p class="order-item">${order.totalCost}</p>
+        <span  data-item="${order.food}" class="cancel-order-btn">&times;</span
       </div>`;
     $('#todays-orders').append(element);
   },
