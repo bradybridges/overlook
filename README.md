@@ -6,7 +6,7 @@ View the live page [here.](https://bradybridges.github.io/overlook/)
 * [Tools Used](#Tools-Used)
 * [Requirements](#Requirements)
 * [Setup](#Setup)
-* [Screenshot](#Screenshots) 
+* [Screenshots](#Screenshot) 
 
 ## Objective
   
