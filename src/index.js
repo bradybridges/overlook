@@ -5,7 +5,7 @@ import domUpdates from './domUpdates';
 import Hotel from './Hotel';
 
 let hotel;
-const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1 < 10 ? '0'.concat(new Date().getMonth() + 1) : new Date().getMonth() + 1 < 10}/${new Date().getDate()}`
+const date = '2019/09/10';
 const formatData = (data) => {
 
   const result = data.reduce((formattedData, dataset) => {
