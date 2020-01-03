@@ -5,7 +5,7 @@ import domUpdates from './domUpdates';
 import Hotel from './Hotel';
 
 let hotel;
-const date = '2019/09/10';
+const date = '2019/09/11';
 const formatData = (data) => {
 
   const result = data.reduce((formattedData, dataset) => {
