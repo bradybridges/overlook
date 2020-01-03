@@ -1,5 +1,4 @@
 # Overlook - A hotel management app
-View the live page [here.](https://bradybridges.github.io/overlook/)
 
 ## Table of contents
 * [Objective](#Objective)
